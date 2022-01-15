@@ -36,12 +36,36 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        // if (!$request->ajax()) return redirect('/');
+
+        // $users = new User();
+        // $users->ci = $request->ci;
+        // $users->nombre = $request->nombre;
+        // $users->telefono = $request->telefono;
+        // $users->email = $request->email;
+        // $users->estado = $request->estado;
+        // $users->contrasenia = $request->contrasenia;
+        // $users->direccion = $request->direccion;
+        // $users->tipo_usuario = $request->tipo_usuario;
+        // $users->save();
+
+        // if (!$request->ajax()) return redirect('/');
+        // $empleado = new Empleado();
+        // $empleado->ci = $request->ci;
+        // $empleado->fecha_inicio = $request->fecha_inicio;
+        // $empleado->fecha_fin = $request->fecha_fin; 
+        // $empleado->save();
+
         $datosUsuario = request()->except('_token', 'fecha_inicio', 'fecha_fin');
-        //User::insert($datosUsuario);
+        User::insert($datosUsuario);
         $datosEmpleado = request()->except('_token', 'nombre','telefono','email','estado','contrasenia', 'direccion', 'tipo_usuario');
-      //  Empleado::insert($datosEmpleado);
-        return response()->json($datosEmpleado);
+        Empleado::insert($datosEmpleado);
+        // //echo ($request) ;
+        // // dump($request);
+        // // die();
+        // //var_dump($request); 
+       return response()->json($datosEmpleado);
     }
 
     /**
