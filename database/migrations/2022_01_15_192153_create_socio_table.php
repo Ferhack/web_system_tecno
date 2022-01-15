@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSociosTable extends Migration
+class CreateSocioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSociosTable extends Migration
      */
     public function up()
     {
-        Schema::create('socios', function (Blueprint $table) {
-            $table->integer('ci');
+        Schema::create('socio', function (Blueprint $table) {
+            $table->integer('ci')->unsigned();
             $table->date('fecha_afiliacion'); 
-            $table->date('nro_puesto'); 
-            $table->date('tipo_socio'); 
+            $table->integer('nro_puesto'); 
+            $table->string('tipo_socio',1); 
             $table->date('fecha_inicio'); 
             $table->foreign('ci')->references('ci')->on('users');
         });
@@ -30,6 +30,6 @@ class CreateSociosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('socios');
+        Schema::dropIfExists('socio');
     }
 }

@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Socio extends Model
+class Asistencia extends Model
 {
-    protected $primaryKey = 'ci';
-    protected $table = 'socio';
+    protected $primaryKey = 'id';
+    protected $table = 'asistencia';
     protected $fillable = [
-        'ci','fecha_afiliacion','nro_puesto','tipo_socio','fecha_inicio'
+        'id','fecha_actividad','actividad'
     ];
     public $timestamps = false;
-}
+} 

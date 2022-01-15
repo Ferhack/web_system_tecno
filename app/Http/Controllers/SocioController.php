@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Socio;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class SocioController extends Controller
 {
@@ -14,7 +15,8 @@ class SocioController extends Controller
      */
     public function index()
     {
-        //
+        $datos['socio'] =User::paginate(5);
+       // return view('gestion_de_usuarios_asistencia_y_actas.socio.index',$datos);
     }
 
     /**
@@ -24,8 +26,8 @@ class SocioController extends Controller
      */
     public function create()
     {
-        //
-    }
+        //return view('gestion_de_usuarios_asistencia_y_actas.socio.create');
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +37,11 @@ class SocioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosUsuario = request()->except('_token', 'fecha_afiliacion','nro_puesto','tipo_socio','fecha_inicio');
+        User::insert($datosUsuario);
+        $datosSocio = request()->except('_token', 'nombre','telefono','email','estado','contrasenia', 'direccion', 'tipo_usuario');
+        Socio::insert($datosSocio); 
+       return response()->json($datosSocio);
     }
 
     /**
@@ -57,7 +63,8 @@ class SocioController extends Controller
      */
     public function edit(Socio $socio)
     {
-        //
+        //$socio=Socio::findOrFail($ci);
+        //return view('gestion_de_usuarios_asistencia_y_actas.socio.edit');
     }
 
     /**
@@ -69,7 +76,7 @@ class SocioController extends Controller
      */
     public function update(Request $request, Socio $socio)
     {
-        //
+        //return view('gestion_de_usuarios_asistencia_y_actas.socio.form');
     }
 
     /**
