@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 
 <form action="{{ url('/empleado')}}" method="post">
     @csrf
@@ -43,3 +46,4 @@
 
     <input type="submit" value="Guardar Datos">
 </form> 
+@endsection
