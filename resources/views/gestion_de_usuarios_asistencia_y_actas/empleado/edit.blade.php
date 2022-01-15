@@ -1,4 +1,3 @@
-edit
 
 <form action="{{ url('/empleado')}}" method="put">
     @csrf

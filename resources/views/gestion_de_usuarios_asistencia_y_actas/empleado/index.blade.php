@@ -1,4 +1,3 @@
-pejiiii
 <table class="table table-light">
     <thead class="thead-light">
         <tr> 
@@ -9,7 +8,9 @@ pejiiii
             <th>Estado</th>
             <th>Contraseña</th>
             <th>Direccion</th> 
-            {{-- <th>Acciones</th>  --}}
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th> 
+            <th>Acciones</th> 
         </tr>
     </thead>
     <tbody>

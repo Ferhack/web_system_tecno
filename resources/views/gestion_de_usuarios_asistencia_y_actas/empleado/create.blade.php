@@ -1,5 +1,4 @@
-create
-pejiiii
+
 <form action="{{ url('/empleado')}}" method="post">
     @csrf
     <label for="ci">CI </label>
