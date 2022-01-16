@@ -53,7 +53,9 @@
                                 <input type="text" name="direccion" id="direccion" class = "form-control" required>
                             </div>
                         </div>
-            
+
+                        <input type="hidden" name="tipo_usuario" value="E" id="tipo_usuario" class = "form-control">
+
                         <div class="row mb-3">
                             <label for="fecha_inicio" class="col-md-2 col-form-label ">Fecha Inicio  </label>
                             <div class="col-md-10">

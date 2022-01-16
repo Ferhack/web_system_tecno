@@ -15,7 +15,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $datos['empleado'] =User::paginate(5);
+        $datos['empleado'] =User::all();
         return view('gestion_de_usuarios_asistencia_y_actas.empleado.index',$datos);
     }
 
@@ -65,7 +65,7 @@ class EmpleadoController extends Controller
         // // dump($request);
         // // die();
         // //var_dump($request); 
-       return response()->json($datosEmpleado);
+        return redirect('/empleado')->with('status', 'Empleado Creado Exitosamente!');
     }
 
     /**
