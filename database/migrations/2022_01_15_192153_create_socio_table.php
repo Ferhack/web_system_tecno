@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmpleadoTable extends Migration
+class CreateSocioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateEmpleadoTable extends Migration
      */
     public function up()
     {
-        Schema::create('empleado', function (Blueprint $table) {   
+        Schema::create('socio', function (Blueprint $table) {
             $table->integer('ci')->unsigned();
+            $table->date('fecha_afiliacion'); 
+            $table->integer('nro_puesto'); 
+            $table->string('tipo_socio',1); 
             $table->date('fecha_inicio'); 
-            $table->date('fecha_fin'); 
             $table->foreign('ci')->references('ci')->on('users');
         });
     }
@@ -28,6 +30,6 @@ class CreateEmpleadoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empleado');
+        Schema::dropIfExists('socio');
     }
 }
