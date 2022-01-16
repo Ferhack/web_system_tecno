@@ -4,9 +4,10 @@
     <div class="container justify-content-center">
         <div class="row">
             <div class="col-xs|sm|md|lg|xl-1-12">
-                <div class="card">
-                    <div class="card-header fw-bold">
-                        <h3>Empleados +</h3>
+                <div class="card" style="padding: 30px;">
+                    <div class="card-header">
+                        <h4 class="fw-bold">Empleados</h4>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/empleado/create')}}">Empleado Nuevo</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

@@ -1,49 +1,82 @@
 @extends('layouts.app')
 
 @section('content')
-
-<form action="{{ url('/empleado')}}" method="post">
-    @csrf
-    <label for="ci">CI </label>
-    <input type="text" name="ci">
-    <br>
-
-    <label for="nombre">Nombre </label>
-    <input type="text" name="nombre" id="nombre">
-    <br>
-
-    <label for="telefono">Telefono  </label>
-    <input type="text" name="telefono" id="telefono">
-    <br>
-
-    <label for="email">Email  </label>
-    <input type="text" name="email" id="email">
-    <br>
-
-    <label for="estado">Estado  </label>
-    <input type="text" name="estado" id="estado">
-    <br>
-
-    <label for="contrasenia">Contraseña  </label>
-    <input type="text" name="contrasenia" id="contrasenia" >
-    <br>
-    
-    <label for="direccion">Direccion  </label>
-    <input type="text" name="direccion" id="direccion">
-    <br>
-
-    <label for="tipo_usuario">Tipo Usuario  </label>
-    <input type="text" name="tipo_usuario" id="tipo_usuario" >
-    <br>
-
-    <label for="fecha_inicio">Fecha Inicio  </label>
-    <input type="text" name="fecha_inicio" id="fecha_inicio">
-    <br>
-
-    <label for="fecha_fin">Fecha Fin  </label>
-    <input type="text" name="fecha_fin" id="fecha_fin">
-    <br>
-
-    <input type="submit" value="Guardar Datos">
-</form> 
+<div class="container justify-content-center">
+    <div class="row">
+        <div class="col-xs|sm|md|lg|xl-1-12">
+            <div class="card" style="padding: 30px;">
+                <div class="card-header">
+                    <h4 class="fw-bold">Registrar Empleado</h4>
+                </div>
+            
+                <div class="card-body">
+                    <form method="POST" action="{{ url('/empleado')}}">
+                        @csrf
+                        <div class="row mb-3">
+                            <label for="ci" class = "col-md-2 col-form-label ">CI </label>
+                            <div class="col-md-10">
+                                <input type="number" name="ci" class = "form-control" min="1" step="1"  required>
+                            </div>   
+                        </div>
+            
+                        <div class="row mb-3">
+                            <label for="nombre" class="col-md-2 col-form-label ">Nombre </label>
+                            <div class="col-md-10">
+                                <input type="text" name="nombre" id="nombre" class = "form-control" required>    
+                            </div>
+                        </div>
+            
+                        <div class="row mb-3">
+                            <label for="telefono" class="col-md-2 col-form-label ">Telefono  </label>
+                            <div class="col-md-10">
+                                <input type="tel" pattern="[0-9]{8}" name="telefono" id="telefono" class = "form-control" required>
+                            </div>
+                        </div>
+            
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-2 col-form-label ">Email  </label>
+                            <div class="col-md-10">
+                                <input type="email" name="email" id="email" class = "form-control" required>
+                            </div>
+                        </div>
+            
+                        <div class="row mb-3">
+                            <label for="contrasenia" class="col-md-2 col-form-label ">Contraseña  </label>
+                            <div class="col-md-10">
+                                <input type="password" name="contrasenia" id="contrasenia" class = "form-control" required>
+                            </div>
+                        </div>
+            
+                        <div class="row mb-3">
+                            <label for="direccion" class="col-md-2 col-form-label ">Direccion  </label>
+                            <div class="col-md-10">
+                                <input type="text" name="direccion" id="direccion" class = "form-control" required>
+                            </div>
+                        </div>
+            
+                        <div class="row mb-3">
+                            <label for="fecha_inicio" class="col-md-2 col-form-label ">Fecha Inicio  </label>
+                            <div class="col-md-10">
+                                <input type="date" name="fecha_inicio" id="fecha_inicio" class = "form-control" required>    
+                            </div>
+                        </div>
+            
+                        <div class="row mb-3">
+                            <label for="fecha_fin" class="col-md-2 col-form-label ">Fecha Fin  </label>
+                            <div class="col-md-10">
+                                <input type="date" name="fecha_fin" id="fecha_fin" class = "form-control" required>    
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row mb-0">
+                            <div class="col-md-10 offset-md-2">
+                                <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>        
 @endsection
