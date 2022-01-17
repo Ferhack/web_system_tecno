@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +18,13 @@ use App\Http\Controllers\EmpleadoController;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/empleado', function () {
-    return view('gestion_de_usuarios_asistencia_y_actas.empleado.index');
-});
 
+// define all routes, to show routes execute: php artisan route:list
 Route::resource('empleado', EmpleadoController::class);
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
