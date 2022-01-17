@@ -43,7 +43,7 @@
                         <div class="row mb-3">
                             <label for="contrasenia" class="col-md-2 col-form-label ">Contraseña  </label>
                             <div class="col-md-10">
-                                <input type="password" name="contrasenia" id="contrasenia" class = "form-control" required>
+                                <input type="password" name="password" id="password" class = "form-control" required>
                             </div>
                         </div>
             

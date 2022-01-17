@@ -20,12 +20,12 @@ class CreateUsersTable extends Migration
             $table->string('telefono',8);
             $table->string('email',255); 
             $table->string('estado',1)->default('1');
-            $table->string('contrasenia',255); 
+            $table->string('password',255); 
             $table->string('direccion',255);
             $table->string('tipo_usuario',1); 
         });
 
-        DB::table('users')->insert(array('ci' => '9719822','nombre'=>'zuleny','telefono'=>'76431901','email'=>'zuleny.cr@gmail.com','estado'=>'1','contrasenia' => '$2y$10$gaZQTLSJxRC3jpKMRLgqs.VsdnO/xGl0bnvozj8dxmHLxDUUwuCz6','direccion' => 'Avenida Banzer', 'tipo_usuario'=>'E'));
+        DB::table('users')->insert(array('ci' => '9719822','nombre'=>'zuleny','telefono'=>'76431901','email'=>'zuleny@gmail.com','estado'=>'1','password' => '11235813','direccion' => 'Avenida Banzer', 'tipo_usuario'=>'E'));
         
     }
 

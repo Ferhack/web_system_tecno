@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmpleadoController;
 
 /*
@@ -15,7 +16,7 @@ use App\Http\Controllers\EmpleadoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 Route::get('/empleado', function () {
     return view('gestion_de_usuarios_asistencia_y_actas.empleado.index');

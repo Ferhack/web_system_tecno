@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $primaryKey = 'ci';
     protected $table = 'users';
     protected $fillable = [
-        'ci', 'nombre', 'telefono','email', 'estado', 'contrasenia', 'direccion', 'tipo_usuario'
+        'ci', 'nombre', 'telefono','email', 'estado', 'password', 'direccion', 'tipo_usuario'
     ];
     public $timestamps = false;
     // /**
