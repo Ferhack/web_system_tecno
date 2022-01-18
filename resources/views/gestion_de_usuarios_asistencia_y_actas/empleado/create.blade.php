@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container justify-content-center">
+<div class="container justify-content-center py-4">
     <div class="row">
         <div class="col-xs|sm|md|lg|xl-1-12">
-            <div class="card" style="padding: 30px;">
+            <div class="card bg-light border border-2" style="padding: 30px;">
                 <div class="card-header">
                     <h4 class="fw-bold">Registrar Empleado</h4>
                 </div>
             
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/empleado')}}">
+                    <form method="POST" action="{{ url('/empleado')}}" class="row g-3">
                         @csrf
                         <div class="row mb-3">
                             <label for="ci" class = "col-md-2 col-form-label ">CI </label>

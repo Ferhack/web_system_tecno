@@ -7,26 +7,30 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Sistema para Asociacion de Comerciantes 4 de Octubre</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/layouts/sidebar.js') }}" defer></script>
+    <script src="{{ asset('js/switch.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
     <link href="{{ asset('css/layouts/sidebar.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         @auth
             @include('layouts.partials.navbar')
-            @include('layouts.partials.sidebar')
         @endauth
-        <main class="py-4">
+        <main>
+            @auth
+                @include('layouts.partials.sidebar')
+            @endauth
             @yield('content')
         </main>
     </div>
