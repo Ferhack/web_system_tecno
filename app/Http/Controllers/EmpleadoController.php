@@ -11,6 +11,16 @@ use Illuminate\Http\Request;
 class EmpleadoController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // middleware to protected the routes
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -28,7 +38,7 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-       return view('gestion_de_usuarios_asistencia_y_actas.empleado.create');
+        return view('gestion_de_usuarios_asistencia_y_actas.empleado.create');
     }
 
     /**
