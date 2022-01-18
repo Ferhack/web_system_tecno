@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Socio;
 use Illuminate\Http\Request;
@@ -15,8 +16,8 @@ class SocioController extends Controller
      */
     public function index()
     {
-        $datos['socio'] =User::paginate(5);
-       // return view('gestion_de_usuarios_asistencia_y_actas.socio.index',$datos);
+        $datos['socio'] =Socio::all();
+       return view('gestion_de_usuarios_asistencia_y_actas.socio.index',$datos);
     }
 
     /**
@@ -26,7 +27,7 @@ class SocioController extends Controller
      */
     public function create()
     {
-        //return view('gestion_de_usuarios_asistencia_y_actas.socio.create');
+        return view('gestion_de_usuarios_asistencia_y_actas.socio.create');
      }
 
     /**
@@ -37,11 +38,26 @@ class SocioController extends Controller
      */
     public function store(Request $request)
     {
-        $datosUsuario = request()->except('_token', 'fecha_afiliacion','nro_puesto','tipo_socio','fecha_inicio');
-        User::insert($datosUsuario);
-        $datosSocio = request()->except('_token', 'nombre','telefono','email','estado','contrasenia', 'direccion', 'tipo_usuario');
-        Socio::insert($datosSocio); 
-       return response()->json($datosSocio);
+        $users = new User();
+        $users->ci = $request->ci;
+        $users->nombre = $request->nombre;
+        $users->telefono = $request->telefono;
+        $users->email = $request->email;
+        $users->estado = '1';
+        $users->password = Hash::make($request->password);
+        $users->direccion = $request->direccion;
+        $users->tipo_usuario = 'S';
+        $users->save();
+
+        $socio = new Socio();
+        $socio->ci = $request->ci;
+        $socio->fecha_afiliacion = $request->fecha_afiliacion;
+        $socio->nro_puesto = $request->nro_puesto; 
+        $socio->tipo_socio = $request->tipo_socio;
+        $socio->fecha_inicio = $request->fecha_inicio; 
+        $socio->save();
+
+        return redirect('/socio')->with('status', 'Socio Creado Exitosamente!');
     }
 
     /**
@@ -85,8 +101,10 @@ class SocioController extends Controller
      * @param  \App\Models\Socio  $socio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Socio $socio)
+    public function destroy($ci)
     {
-        //
+        Socio::destroy($ci);
+        User::destroy($ci);
+        return redirect('socio');
     }
 }

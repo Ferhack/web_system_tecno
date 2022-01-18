@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container justify-content-center py-4">
+    <div class="container justify-content-center">
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('status') }}
@@ -12,12 +12,12 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold text-dark">Empleados</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/empleado/create')}}">Empleado Nuevo</a>
+                        <h4 class="fw-bold">Socios</h4>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/socio/create')}}">Socio Nuevo</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-light">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>CI</th>
@@ -26,34 +26,38 @@
                                         <th>Email</th>
                                         <th>Estado</th>
                                         <th>Direccion</th>
-                                        <th>Fecha Inicio</th>
-                                        <th>Fecha Fin</th>
+                                        <th>Fecha de Afiliacion</th>
+                                        <th>N° Puesto</th>
+                                        <th>Tipo de Socio</th>
+                                        <th>Fecha de Inicio</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($empleado as $empleado)
+                                    @foreach ($socio as $socio)
                                         <tr>
-                                            <td>{{ $empleado->ci }}</td>
-                                            <td>{{ $empleado->nombre }}</td>
-                                            <td>{{ $empleado->telefono }}</td>
-                                            <td>{{ $empleado->email }}</td>
-                                            <td>{{ $empleado->estado }}</td>
-                                            <td>{{ $empleado->direccion }}</td>
-                                            <td>{{ $empleado->fecha_inicio }}</td>
-                                            <td>{{ $empleado->fecha_fin }}</td>
+                                            <td>{{ $socio->ci }}</td>
+                                            <td>{{ $socio->nombre }}</td>
+                                            <td>{{ $socio->telefono }}</td>
+                                            <td>{{ $socio->email }}</td>
+                                            <td>{{ $socio->estado }}</td>
+                                            <td>{{ $socio->direccion }}</td>
+                                            <td>{{ $socio->fecha_afiliacion }}</td>
+                                            <td>{{ $socio->nro_puesto }}</td>
+                                            <td>{{ $socio->tipo_socio }}</td>
+                                            <td>{{ $socio->fecha_inicio }}</td>
                                             <td> 
-                                                <a href="{{ url('/empleado/'.$empleado->ci.'/edit')}}">
+                                                <a href="{{ url('/socio/'.$socio->ci.'/edit')}}">
                                                     Editar
                                                 </a>
                                                 |
-                                                <form action="{{ url('/empleado/'.$empleado->ci )}}" method="post">
+                                                <form action="{{ url('/socio/'.$socio->ci )}}" method="post">
                                                     @csrf
                                                     {{ method_field('DELETE') }}
                                                     <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
                                                     value="Borrar">
                                                 </form>
-                                            </td> 
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -27,7 +27,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $datos['empleado'] =User::all();
+        $datos['empleado'] =Empleado::all(); 
         return view('gestion_de_usuarios_asistencia_y_actas.empleado.index',$datos);
     }
 
@@ -54,9 +54,10 @@ class EmpleadoController extends Controller
         $users->nombre = $request->nombre;
         $users->telefono = $request->telefono;
         $users->email = $request->email;
+        $users->estado = '1';
         $users->password = Hash::make($request->password);
         $users->direccion = $request->direccion;
-        $users->tipo_usuario = $request->tipo_usuario;
+        $users->tipo_usuario = 'E';
         $users->save();
 
         $empleado = new Empleado();
@@ -109,8 +110,10 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empleado $empleado)
+    public function destroy($ci)
     {
-        //
+        Empleado::destroy($ci);
+        User::destroy($ci);
+        return redirect('empleado');
     }
 }

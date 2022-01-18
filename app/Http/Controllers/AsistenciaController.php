@@ -14,7 +14,8 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        //
+        $datos['asistencia'] =Asistencia::all();
+        return view('gestion_de_usuarios_asistencia_y_actas.asistencia.index',$datos);
     }
 
     /**
@@ -24,7 +25,7 @@ class AsistenciaController extends Controller
      */
     public function create()
     {
-        //
+        return view('gestion_de_usuarios_asistencia_y_actas.asistencia.create');
     }
 
     /**
@@ -35,7 +36,13 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $asistencia = new Asistencia();
+        $asistencia->fecha_actividad = $request->fecha_actividad;
+        $asistencia->actividad = $request->actividad; 
+        $asistencia->save();
+
+
+        return redirect('/asistencia')->with('status', 'Asistencia Creado Exitosamente!');
     }
 
     /**
@@ -55,9 +62,10 @@ class AsistenciaController extends Controller
      * @param  \App\Models\Asistencia  $asistencia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Asistencia $asistencia)
-    {
-        //
+    public function edit($id)
+    { 
+        $asistencia = Asistencia::findOrFail($id); 
+        return view('gestion_de_usuarios_asistencia_y_actas.asistencia.edit',compact('asistencia'));
     }
 
     /**
@@ -67,9 +75,12 @@ class AsistenciaController extends Controller
      * @param  \App\Models\Asistencia  $asistencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Asistencia $asistencia)
+    public function update(Request $request,$id)
     {
-        //
+        $datosAsistencia = request()->except(['_token','_method']);
+        Asistencia::where('id','=',$id)->update($datosAsistencia);
+         
+        return redirect('/asistencia')->with('status', 'Asistencia Actualizada Exitosamente!');
     }
 
     /**
@@ -78,8 +89,9 @@ class AsistenciaController extends Controller
      * @param  \App\Models\Asistencia  $asistencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Asistencia $asistencia)
+    public function destroy($id)
     {
-        //
+        Asistencia::destroy($id);
+        return redirect('asistencia');
     }
 }
