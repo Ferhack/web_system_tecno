@@ -12,48 +12,38 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold">Empleados</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/empleado/create')}}">Empleado Nuevo</a>
+                        <h4 class="fw-bold">Asistencia</h4>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/asistencia/create')}}">Asistencia Nueva</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>CI</th>
-                                        <th>Nombre</th>
-                                        <th>Telefono</th>
-                                        <th>Email</th>
-                                        <th>Estado</th>
-                                        <th>Direccion</th>
-                                        <th>Fecha Inicio</th>
-                                        <th>Fecha Fin</th>
+                                        <th>Id</th>
+                                        <th>Fecha</th>
+                                        <th>Actividad</th> 
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($empleado as $empleado)
+                                    @foreach ($asistencia as $asistencia)
                                         <tr>
-                                            <td>{{ $empleado->ci }}</td>
-                                            <td>{{ $empleado->nombre }}</td>
-                                            <td>{{ $empleado->telefono }}</td>
-                                            <td>{{ $empleado->email }}</td>
-                                            <td>{{ $empleado->estado }}</td>
-                                            <td>{{ $empleado->direccion }}</td>
-                                            <td>{{ $empleado->fecha_inicio }}</td>
-                                            <td>{{ $empleado->fecha_fin }}</td>
+                                            <td>{{ $asistencia->id }}</td>
+                                            <td>{{ $asistencia->fecha_actividad }}</td>
+                                            <td>{{ $asistencia->actividad }}</td> 
                                             <td> 
-                                                <a href="{{ url('/empleado/'.$empleado->ci.'/edit')}}">
+                                                <a href="{{ url('/asistencia/'.$asistencia->id.'/edit')}}">
+                                                    
                                                     Editar
-                                                </a>
-                                                |
-                                                <form action="{{ url('/empleado/'.$empleado->ci )}}" method="post">
+                                                </a>|
+                                                <form action="{{ url('/asistencia/'.$asistencia->id )}}" method="post">
                                                     @csrf
                                                     {{ method_field('DELETE') }}
                                                     <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
                                                     value="Borrar">
                                                 </form>
-                                            </td> 
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
