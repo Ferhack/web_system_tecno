@@ -14,7 +14,9 @@ class MultaController extends Controller
      */
     public function index()
     {
-        //
+        // TODO: get view principal multa manage
+        $datos['multa'] = Multa::all();
+        return view('gestion_de_pago_de_aportes.multa.index', $datos);
     }
 
     /**
@@ -24,7 +26,7 @@ class MultaController extends Controller
      */
     public function create()
     {
-        //
+        return view('gestion_de_pago_de_aportes.multa.create');
     }
 
     /**
@@ -35,18 +37,12 @@ class MultaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Multa  $multa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Multa $multa)
-    {
-        //
+        //TODO: create new multa
+        $multa = new Multa();
+        $multa->descripcion = $request->descripcion;
+        $multa->monto = $request->monto;
+        $multa->save();
+        return redirect('/multa')->with('status', 'Multa creado exitosamente!');
     }
 
     /**
@@ -55,9 +51,18 @@ class MultaController extends Controller
      * @param  \App\Models\Multa  $multa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Multa $multa)
+    public function edit(int $id)
     {
-        //
+        // TODO: get info multa
+        $multa = Multa::where('id', $id)->first();
+        return view(
+            'gestion_de_pago_de_aportes.multa.edit',
+            [
+                'id' => $multa->id,
+                'descripcion' => $multa->descripcion,
+                'monto' => $multa->monto
+            ]
+        );
     }
 
     /**
@@ -67,9 +72,14 @@ class MultaController extends Controller
      * @param  \App\Models\Multa  $multa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Multa $multa)
+    public function update(Request $request, int $id)
     {
-        //
+        //TODO: update multa by ID
+        $multa = Multa::find($id);
+        $multa->descripcion = $request->descripcion;
+        $multa->monto = $request->monto;
+        $multa->save();
+        return redirect('/multa')->with('status', 'Multa Actualizado Exitosamente!');
     }
 
     /**
@@ -78,8 +88,10 @@ class MultaController extends Controller
      * @param  \App\Models\Multa  $multa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Multa $multa)
+    public function destroy(int $id)
     {
-        //
+        //TODO: remove an aporte
+        Multa::find($id)->delete();
+        return redirect('/multa')->with('status', 'Multa Eliminado sin problemas!');
     }
 }

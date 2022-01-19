@@ -14,7 +14,8 @@ class AporteController extends Controller
      */
     public function index()
     {
-        //
+        $datos['aporte'] = Aporte::all();
+        return view('gestion_de_pago_de_aportes.aporte.index', $datos);
     }
 
     /**
@@ -24,7 +25,7 @@ class AporteController extends Controller
      */
     public function create()
     {
-        //
+        return view('gestion_de_pago_de_aportes.aporte.create');
     }
 
     /**
@@ -35,18 +36,15 @@ class AporteController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Aporte  $aporte
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Aporte $aporte)
-    {
-        //
+        //TODO: create new aporte
+        $aporte = new Aporte();
+        $aporte->descripcion = $request->descripcion;
+        $aporte->fecha_inicio_pago = $request->fecha_inicio_pago;
+        $aporte->monto = $request->monto;
+        $aporte->fecha_limite = $request->fecha_limite;
+        $aporte->porcentaje_mora = $request->porcentaje_mora;
+        $aporte->save();
+        return redirect('/aporte')->with('status', 'Aporte Creado Exitosamente!');
     }
 
     /**
@@ -55,9 +53,20 @@ class AporteController extends Controller
      * @param  \App\Models\Aporte  $aporte
      * @return \Illuminate\Http\Response
      */
-    public function edit(Aporte $aporte)
+    public function edit(int $id)
     {
-        //
+        $aporte = Aporte::where('id', $id)->first();
+        return view(
+            'gestion_de_pago_de_aportes.aporte.edit',
+            [
+                'id' => $aporte->id,
+                'descripcion' => $aporte->descripcion,
+                'fecha_inicio_pago' => $aporte->fecha_inicio_pago,
+                'monto' => $aporte->monto,
+                'fecha_limite' => $aporte->fecha_limite,
+                'porcentaje_mora' => $aporte->porcentaje_mora
+            ]
+        );
     }
 
     /**
@@ -67,9 +76,17 @@ class AporteController extends Controller
      * @param  \App\Models\Aporte  $aporte
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Aporte $aporte)
+    public function update(Request $request, int $id)
     {
-        //
+        //TODO: update aporte by ID
+        $aporte = Aporte::find($id);
+        $aporte->descripcion = $request->descripcion;
+        $aporte->fecha_inicio_pago = $request->fecha_inicio_pago;
+        $aporte->monto = $request->monto;
+        $aporte->fecha_limite = $request->fecha_limite;
+        $aporte->porcentaje_mora = $request->porcentaje_mora;
+        $aporte->save();
+        return redirect('/aporte')->with('status', 'Aporte Actualizado Exitosamente!');
     }
 
     /**
@@ -78,8 +95,10 @@ class AporteController extends Controller
      * @param  \App\Models\Aporte  $aporte
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Aporte $aporte)
+    public function destroy(int $id)
     {
-        //
+        //TODO: remove an aporte
+        Aporte::find($id)->delete();
+        return redirect('/aporte')->with('status', 'Aporte Eliminado sin problemas!');
     }
 }
