@@ -10,6 +10,7 @@ use App\Http\Controllers\ActaReunionController;
 use App\Http\Controllers\AporteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MultaController;
+use App\Http\Controllers\IngresoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,9 @@ Route::get('/multa/{id}/edit', [MultaController::class, 'edit']);
 Route::post('/multa/{id}/update', [MultaController::class, 'update']);
 
 Route::post('/multa/{id}/delete', [MultaController::class, 'destroy']);
+
+// INGRESO ROUTE
+Route::resource('ingreso', IngresoController::class);
 
 // HOME ROUTE
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
