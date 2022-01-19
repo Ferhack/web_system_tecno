@@ -11,6 +11,7 @@ use App\Http\Controllers\AporteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MultaController;
 use App\Http\Controllers\IngresoController;
+use App\Http\Controllers\EgresoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,9 @@ Route::post('/multa/{id}/delete', [MultaController::class, 'destroy']);
 
 // INGRESO ROUTE
 Route::resource('ingreso', IngresoController::class);
+
+// EGRESO ROUTE
+Route::resource('egreso', EgresoController::class);
 
 // HOME ROUTE
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

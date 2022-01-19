@@ -31,7 +31,7 @@
                         <br/>
                         <div class="row mb-0">
                             <div class="col-md-10 offset-md-2">
-                                <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+                                <input type="submit" value="Guardar Datos" class="btn btn-success">
                             </div>
                         </div>
                     </form>
