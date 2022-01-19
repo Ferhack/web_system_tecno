@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MultaController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\EgresoController;
+use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ReportesController;
 
 /*
@@ -74,6 +75,9 @@ Route::resource('ingreso', IngresoController::class);
 
 // EGRESO ROUTE
 Route::resource('egreso', EgresoController::class);
+
+// PAGO ROUTE
+Route::resource('pago', PagoController::class);
 
 // REPORTE ROUTE
 Route::get('/reporte_ingreso', [ReportesController::class, 'indexIngreso']);
