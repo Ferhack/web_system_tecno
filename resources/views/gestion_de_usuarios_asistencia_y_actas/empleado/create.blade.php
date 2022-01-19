@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-xs|sm|md|lg|xl-1-12">
             <div class="card bg-light border border-2" style="padding: 30px;">
-                <div class="card-header">
+                <div class="card-header"> 
                     <h4 class="fw-bold">Registrar Empleado</h4>
                 </div>
             

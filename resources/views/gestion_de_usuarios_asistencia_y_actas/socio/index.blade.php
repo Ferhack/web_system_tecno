@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container justify-content-center">
+    <div class="container justify-content-center py-4">
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('status') }}
@@ -12,7 +12,7 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold">Socios</h4>
+                        <h4 class="fw-bold text-dark">Socios</h4>
                         <a class="btn btn-outline-success float-end" href="{{ url('/socio/create')}}">Socio Nuevo</a>
                     </div>
                     <div class="card-body">

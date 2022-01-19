@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container justify-content-center">
+<div class="container justify-content-center py-4">
     <div class="row">
         <div class="col-xs|sm|md|lg|xl-1-12">
-            <div class="card" style="padding: 30px;">
+            <div class="card bg-light border border-2" style="padding: 30px;">
                 <div class="card-header">
                     <h4 class="fw-bold">Registrar Socio</h4>
                 </div>
@@ -83,6 +83,9 @@
                         <div class="row mb-0">
                             <div class="col-md-10 offset-md-2">
                                 <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+                                <a href="{{ url('/socio')}}" class="btn btn-primary">
+                                    Cancelar
+                                </a>
                             </div>
                         </div>
                     </form>
