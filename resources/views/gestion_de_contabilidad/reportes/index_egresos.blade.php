@@ -19,8 +19,8 @@
                         <div class="alert alert-secondary">
                             <canvas id="myChart"></canvas>
                             {{-- @foreach ($array as $array)
-                                <p>{{ $array }}</p>
-                            @endforeach --}}
+                        <p>{{ $array }}</p>
+                        @endforeach --}}
                         </div>
                     </div>
                 </div>
@@ -28,15 +28,29 @@
         </div>
     </div>
     <script>
-        let dataValues = {!! json_encode($values) !!};
-        let dataLabels = {!! json_encode($mes) !!};
+        function generateColorsHexa(listResult) {
+            listColors = [];
+            for (const result of listResult) {
+                result > 100 ? listColors.push('red') : listColors.push('green');
+            }
+            return listColors;
+        }
+
+        function TotalSumEgreso(listResult) {
+            resultSum = 0;
+            for (const result of listResult) {
+                resultSum = resultSum + parseInt(result);
+            }
+            return resultSum;
+        }
+
+        let dataValues = {!! json_encode($listReportResult) !!};
+        let dataLabels = {!! json_encode($listReportDetail) !!};
 
         const data = {
             labels: dataLabels,
             datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: this.generateColorsHexa(dataValues),
                 data: dataValues
             }]
         };
@@ -57,7 +71,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Chart.js Horizontal Bar Chart'
+                    text: 'Gasto Total Actualmente: ' + this.TotalSumEgreso(dataValues) + ' Bs.'
                 }
             }
         }

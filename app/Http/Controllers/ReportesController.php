@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aporte;
-use App\Models\AportePago;
+use App\Models\Egreso;
 use App\Models\Socio;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportesController extends Controller
 {
@@ -16,21 +16,34 @@ class ReportesController extends Controller
      */
     public function indexIngreso()
     {
-        // TODO: get view principal multa manage
-        // $datos['multa'] = Multa::all();
-        // $aporte['aporte'] = Aporte::all();
+        // TODO: report aporte input
+        $datos['aporte'] = Aporte::all();
         // $countSocio = Socio::all()->count();
-        $array1 = array(1, 2, 5, 9, 1, 20, -3, 6, 50, 23, 20, 15);
-        $array2 = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
-        // foreach ($aporte as $aporteToMake) {
-        //     $idAporte = $aporteToMake->id;
-        //     $amountAporte = $aporteToMake->monto;
-        //     $descripcion = $aporteToMake->description;
-        //     AportePago::where('')
-        // }
+        $countSocio = 5;
+        $listReportResult = array();
+        $listReportDetail = array();
+        foreach ($datos['aporte'] as $aporte) {
+            $idAporte = $aporte->id;
+            $amountAporte = $aporte->monto;
+            $descripcion = $aporte->descripcion;
+            $result = DB::table('aporte_pago')
+                ->select(DB::raw('count(distinct nro_pago) as count_pagos'))
+                ->where('id_aporte', '=', $idAporte)->get();
+            $countPagoByAporte = 1;
+            // $countPagoByAporte = $result[0]->count_pagos;
+            $totalPercentage = (100 / ($countSocio * $amountAporte)) * ($amountAporte * $countPagoByAporte);
+            // echo $totalPercentage . '---';
+            // echo '$totalPercentage' . $totalPercentage . '      ';
+            // echo '$descripcion' . $descripcion . '          ';
+            $listReportResult[] = $totalPercentage;
+            $listReportDetail[] = $descripcion;
+            // var_dump($listReportResult);
+            // var_dump($listReportDetail);
+        }
+        // TODO: report multa input
         return view('gestion_de_contabilidad.reportes.index_ingresos', [
-            'mes' => $array2,
-            'values' => $array1
+            'listReportDetail' => $listReportDetail,
+            'listReportResult' => $listReportResult
         ]);
     }
 
@@ -42,13 +55,18 @@ class ReportesController extends Controller
     public function indexEgreso()
     {
         // TODO: get view principal multa manage
-        // $datos['multa'] = Multa::all();
-        // return view('gestion_de_pago_de_aportes.multa.index', $datos);
-        $array1 = array(1, 2, 5, 9, 1, 20, 33, 6, 50, 23, 20, 15);
-        $array2 = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $listReportDetail = array();
+        $listReportResult = array();
+        $datos['egreso'] = Egreso::all();
+        foreach ($datos['egreso'] as $egreso) {
+            $descripcion = $egreso->detalle;
+            $monto = $egreso->monto;
+            $listReportDetail[] = $descripcion;
+            $listReportResult[] = $monto;
+        }
         return view('gestion_de_contabilidad.reportes.index_egresos', [
-            'mes' => $array2,
-            'values' => $array1
+            'listReportDetail' => $listReportDetail,
+            'listReportResult' => $listReportResult
         ]);
     }
 }

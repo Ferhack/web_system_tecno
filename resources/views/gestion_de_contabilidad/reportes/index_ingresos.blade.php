@@ -28,8 +28,8 @@
         </div>
     </div>
     <script>
-        let dataValues = {!! json_encode($values) !!};
-        let dataLabels = {!! json_encode($mes) !!};
+        let dataValues = {!! json_encode($listReportResult) !!};
+        let dataLabels = {!! json_encode($listReportDetail) !!};
 
         const data = {
             labels: dataLabels,
@@ -41,10 +41,31 @@
             }]
         };
 
+        const options = {
+            indexAxis: 'y',
+            // Elements options apply to all of the options unless overridden in a dataset
+            // In this case, we are setting the border of each horizontal bar to be 2px wide
+            elements: {
+                bar: {
+                    borderWidth: 2,
+                }
+            },
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Horizontal Bar Chart'
+                }
+            }
+        }
+
         const config = {
             type: 'bar',
             data: data,
-            options: {}
+            options: options
         };
 
         const myChart = new Chart(
