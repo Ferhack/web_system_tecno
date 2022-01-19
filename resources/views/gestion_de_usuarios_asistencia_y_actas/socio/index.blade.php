@@ -26,10 +26,10 @@
                                         <th>Email</th>
                                         <th>Estado</th>
                                         <th>Direccion</th>
-                                        <th>Fecha de Afiliacion</th>
-                                        <th>N° Puesto</th>
-                                        <th>Tipo de Socio</th>
-                                        <th>Fecha de Inicio</th>
+                                        <th>Fecha Afiliacion</th>
+                                        <th>Puesto</th>
+                                        <th>Tipo Socio</th>
+                                        <th>Fecha Inicio</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -47,17 +47,18 @@
                                             <td>{{ $socio->tipo_socio }}</td>
                                             <td>{{ $socio->fecha_inicio }}</td>
                                             <td> 
-                                                <a href="{{ url('/socio/'.$socio->ci.'/edit')}}">
-                                                    Editar
-                                                </a>
-                                                |
-                                                <form action="{{ url('/socio/'.$socio->ci )}}" method="post">
-                                                    @csrf
-                                                    {{ method_field('DELETE') }}
-                                                    <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                    value="Borrar">
-                                                </form>
-                                            </td>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ url('/socio/'.$socio->ci.'/edit')}}" class="btn btn-warning">
+                                                        Editar
+                                                    </a>
+                                                    <form action="{{ url('/socio/'.$socio->ci )}}" method="post">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
+                                                        value="Borrar" class="btn btn-danger">
+                                                    </form> 
+                                                </div>
+                                            </td>  
                                         </tr>
                                     @endforeach
                                 </tbody>

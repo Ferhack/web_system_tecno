@@ -25,12 +25,17 @@
                                 <input type="text" name="actividad" id="actividad" placeholder="Reunion de inicio de año con informes propuestos......" class = "form-control" required>    
                             </div>
                         </div>
-            
+                        
                         <div class="row mb-0">
-                            <div class="col-md-10 offset-md-2">
-                                <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <div class="col-md-10 offset-md-2">
+                                    <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+                                    <a href="{{ url('/asistencia')}}" class="btn btn-primary">
+                                        Cancelar
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        </div>  
                     </form>
                 </div>
             </div>

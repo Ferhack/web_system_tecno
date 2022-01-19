@@ -6,53 +6,67 @@
         <div class="col-xs|sm|md|lg|xl-1-12">
             <div class="card bg-light border border-2" style="padding: 30px;">
                 <div class="card-header">
-                    <h4 class="fw-bold">Editar Empleado: {{$empleado->ci}}</h4>
+                    <h4 class="fw-bold">Editar Socio: {{$socio->ci}}</h4>
                 </div>
             
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/empleado/'.$empleado->ci) }}" class="row g-3">
+                    <form method="POST" action="{{ url('/socio/'.$socio->ci) }}" class="row g-3">
                         @csrf
                         {{ method_field('PUT') }}
 
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-2 col-form-label ">Nombre</label>
                             <div class="col-md-10">
-                                <input type="text" name="nombre" id="nombre" class = "form-control" required value="{{$empleado->nombre}}">    
+                                <input type="text" name="nombre" id="nombre" class = "form-control" required value="{{$socio->nombre}}">    
                             </div>
                         </div> 
                         <br>
                         <div class="row mb-3">
                             <label for="telefono" class = "col-md-2 col-form-label ">Telefono </label>
                             <div class="col-md-10">
-                                <input type="tel" pattern="[0-9]{8}" name="telefono" class = "form-control"  required value="{{$empleado->telefono}}">
+                                <input type="tel" pattern="[0-9]{8}" name="telefono" class = "form-control"  required value="{{$socio->telefono}}">
                             </div>   
                         </div>
                         <br/>
                         <div class="row mb-3">
                             <label for="email" class="col-md-2 col-form-label ">Email</label>
                             <div class="col-md-10">
-                                <input type="email" name="email" id="email" class = "form-control" required value="{{$empleado->email}}">    
+                                <input type="email" name="email" id="email" class = "form-control" required value="{{$socio->email}}">    
                             </div>
                         </div> 
                         <br>
                         <div class="row mb-3">
                             <label for="direccion" class="col-md-2 col-form-label ">Direccion</label>
                             <div class="col-md-10">
-                                <input type="text" name="direccion" id="direccion" class = "form-control" required value="{{$empleado->direccion}}">    
+                                <input type="text" name="direccion" id="direccion" class = "form-control" required value="{{$socio->direccion}}">    
                             </div>
                         </div> 
                         <br/>
                         <div class="row mb-3">
-                            <label for="fecha_fin" class="col-md-2 col-form-label ">Fecha Fin</label>
-                            <div class="col-md-10">
-                                <input type="date" name="fecha_fin" id="fecha_fin" class = "form-control" required value="{{$empleado->fecha_fin}}">    
+                            <label for="fecha_afiliacion" class="col-md-2 col-form-label ">Fecha Afiliacion</label>
+                            <div class="col-md-4">
+                                <input type="date" name="fecha_afiliacion" id="fecha_afiliacion" class = "form-control" required value="{{$socio->fecha_afiliacion}}">    
                             </div>
+                            <label for="fecha_inicio" class="col-md-2 col-form-label ">Fecha Inicio</label>
+                            <div class="col-md-4">
+                                <input type="date" name="fecha_inicio" id="fecha_inicio" class = "form-control" required value="{{$socio->fecha_inicio}}">    
+                            </div>
+                        </div> 
+                        <div class="row mb-3">
+                            <label for="nro_puesto" class="col-md-2 col-form-label ">Puesto</label>
+                            <div class="col-md-4">
+                                <input type="number" name="nro_puesto" id="nro_puesto" class = "form-control" required value="{{$socio->nro_puesto}}">    
+                            </div>  
+                            <label for="tipo_socio" class="col-md-2 col-form-label ">Tipo Socio</label>
+                            <div class="col-md-4">
+                                <input type="text" name="tipo_socio" id="tipo_socio" class = "form-control" required value="{{$socio->tipo_socio}}">    
+                            </div> 
                         </div> 
                         <div class="row mb-0">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <div class="col-md-10 offset-md-2">
                                     <input type="submit" value="Guardar Datos" class="btn btn-success">
-                                    <a href="{{ url('/empleado')}}" class="btn btn-primary">
+                                    <a href="{{ url('/socio')}}" class="btn btn-primary">
                                         Cancelar
                                     </a>
                                    </div>

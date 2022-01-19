@@ -12,6 +12,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ url('/empleado')}}" class="row g-3">
                         @csrf
+                        <div class="row mb-3"></div>
                         <div class="row mb-3">
                             <label for="ci" class = "col-md-2 col-form-label ">CI </label>
                             <div class="col-md-10">
@@ -58,23 +59,26 @@
 
                         <div class="row mb-3">
                             <label for="fecha_inicio" class="col-md-2 col-form-label ">Fecha Inicio  </label>
-                            <div class="col-md-10">
+                            <div class="col-md-4">
                                 <input type="date" name="fecha_inicio" id="fecha_inicio" class = "form-control" required>    
-                            </div>
-                        </div>
-            
-                        <div class="row mb-3">
+                            </div> 
                             <label for="fecha_fin" class="col-md-2 col-form-label ">Fecha Fin  </label>
-                            <div class="col-md-10">
+                            <div class="col-md-4">
                                 <input type="date" name="fecha_fin" id="fecha_fin" class = "form-control" required>    
                             </div>
                         </div>
                         <br/>
                         <div class="row mb-0">
-                            <div class="col-md-10 offset-md-2">
-                                <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <div class="col-md-10 offset-md-2">
+                                    <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+
+                                    <a href="{{ url('/empleado')}}" class="btn btn-primary">
+                                        Cancelar
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        </div> 
                     </form>
                 </div>
             </div>

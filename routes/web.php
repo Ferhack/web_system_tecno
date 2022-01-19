@@ -31,26 +31,16 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// define all routes, to show routes execute: php artisan route:list
+// EMPLEADO ROUTE
 Route::resource('empleado', EmpleadoController::class);
 
-Route::get('/socio', function () {
-    return view('gestion_de_usuarios_asistencia_y_actas.socio.index');
-});
-
+// SOCIO ROUTE
 Route::resource('socio', SocioController::class);
-Auth::routes();
 
-Route::get('/asistencia', function () {
-    return view('gestion_de_usuarios_asistencia_y_actas.asistencia.index');
-});
+// ASISTENCIA ROUTE
+Route::resource('asistencia', AsistenciaController::class); 
 
-Route::resource('asistencia', AsistenciaController::class);
-
-Route::get('/actaReunion', function () {
-    return view('gestion_de_usuarios_asistencia_y_actas.actaReunion.index');
-});
-
+// ACTA DE REUNION ROUTE
 Route::resource('actaReunion', ActaReunionController::class);
 
 // APORTE ROUTES

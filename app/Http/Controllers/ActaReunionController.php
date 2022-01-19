@@ -14,7 +14,10 @@ class ActaReunionController extends Controller
      */
     public function index()
     {
-        //
+        $datos['actaReunion'] = ActaReunion::join('users', 'users.ci', '=', 'acta_reunion.ci_empleado')
+            ->select('acta_reunion.*','users.nombre')
+            ->get();
+        return view('gestion_de_usuarios_asistencia_y_actas.actaReunion.index', $datos);
     }
 
     /**
@@ -24,7 +27,7 @@ class ActaReunionController extends Controller
      */
     public function create()
     {
-        //
+        return view('gestion_de_usuarios_asistencia_y_actas.actaReunion.create');
     }
 
     /**
@@ -35,7 +38,12 @@ class ActaReunionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $acta_reunion = new ActaReunion();
+        $acta_reunion->fecha_reunion= $request->fecha_reunion;
+        $acta_reunion->descripcion = $request->descripcion;
+        $acta_reunion->ci_empleado = $request->ci_empleado;
+        $acta_reunion->save();
+        return redirect('/actaReunion')->with('status', 'Acta Creada Exitosamente!');
     }
 
     /**
@@ -55,9 +63,11 @@ class ActaReunionController extends Controller
      * @param  \App\Models\ActaReunion  $actaReunion
      * @return \Illuminate\Http\Response
      */
-    public function edit(ActaReunion $actaReunion)
+    public function edit(int $nro_acta)
     {
-        //
+        $actaReunion = ActaReunion::findOrFail($nro_acta); 
+        return view('gestion_de_usuarios_asistencia_y_actas.actaReunion.edit',compact('actaReunion'));
+    
     }
 
     /**
@@ -67,9 +77,13 @@ class ActaReunionController extends Controller
      * @param  \App\Models\ActaReunion  $actaReunion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ActaReunion $actaReunion)
+    public function update(Request $request, int $nro_acta)
     {
-        //
+        $actaReunion = request()->except(['_token','_method']);
+        ActaReunion::where('nro_acta','=',$nro_acta)->update($actaReunion);
+         
+        return redirect('/actaReunion')->with('status', 'Acta Actualizada Exitosamente!');
+    
     }
 
     /**
@@ -78,8 +92,9 @@ class ActaReunionController extends Controller
      * @param  \App\Models\ActaReunion  $actaReunion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ActaReunion $actaReunion)
+    public function destroy(int $nro_acta)
     {
-        //
+        ActaReunion::destroy($nro_acta);
+        return redirect('actaReunion');
     }
 }

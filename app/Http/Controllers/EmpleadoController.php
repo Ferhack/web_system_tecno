@@ -27,8 +27,10 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $datos['empleado'] =Empleado::all(); 
-        return view('gestion_de_usuarios_asistencia_y_actas.empleado.index',$datos);
+        $datos['empleado'] = Empleado::join('users', 'users.ci', '=', 'empleado.ci')
+        ->select('empleado.*','users.nombre','users.telefono','users.email','users.estado','users.direccion')
+        ->get();
+        return view('gestion_de_usuarios_asistencia_y_actas.empleado.index', $datos);
     }
 
     /**
@@ -70,26 +72,21 @@ class EmpleadoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Empleado  $empleado
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Empleado $empleado)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleado $empleado)
+    public function edit(int $ci)
     {
+        $datos['empleado'] = Empleado::where('ci', $ci)->first()
+        ->join('users', 'users.ci', '=', 'empleado.ci')
+        ->select('users.nombre','users.telefono','users.email','users.direccion','empleado.fecha_fin')
+        ->get();
+        //$dato['empleado'] = Empleado::where('ci', $ci)->first();
+        return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit', $datos);
         //$empleado=Empleado::findOrFail($ci);
-        return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit');
+        // return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit');
     }
 
     /**

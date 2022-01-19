@@ -10,7 +10,7 @@
                 </div>
             
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/asistencia')}}">
+                    <form method="POST" action="{{ url('/actaReunion')}}">
                         @csrf 
                         <div class="row mb-3">
                             <label for="fecha_reunion" class="col-md-2 col-form-label ">Fecha de Reunion  </label>
@@ -22,24 +22,23 @@
                         <div class="row mb-3">
                             <label for="descripcion" class="col-md-2 col-form-label ">Descripcion </label>
                             <div class="col-md-10">
-                                <input type="text" name="descripcion" id="descripcion" placeholder="La Reunion se realizo con la presencia de........" class = "form-control" required>    
+                                <input type="text" name="descripcion" id="descripcion" placeholder="Reunion de inicio de año con informes propuestos......" class = "form-control" required>    
                             </div>
                         </div>
+                        <input type="hidden" name="ci_empleado" value="{{ Auth::user()->ci }}" id="tipo_usuario" class = "form-control">
+                        
                         <br/>
-                        <div class="row mb-3">
-                            <label for="tipo_socio" class="col-md-2 col-form-label ">Empleado a Cargo </label>
-                            <div class="col-md-10">
-                                <select class="form-control" id="tipo_socio" name="tipo_socio" required>
-                                    <option value="1">Activo</option> 
-                                </select>
-                            </div>
-                        </div>
-            
+
                         <div class="row mb-0">
-                            <div class="col-md-10 offset-md-2">
-                                <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <div class="col-md-10 offset-md-2">
+                                    <input type="submit" value="Guardar Datos" class="btn btn-success" required>
+                                    <a href="{{ url('/actaReunion')}}" class="btn btn-primary">
+                                        Cancelar
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        </div>   
                     </form>
                 </div>
             </div>

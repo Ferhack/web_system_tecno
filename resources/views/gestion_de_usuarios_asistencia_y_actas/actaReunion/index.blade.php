@@ -12,45 +12,41 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold">Socios</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/socio/create')}}">Empleado Nuevo</a>
+                        <h4 class="fw-bold">Acta de Reunion</h4>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/actaReunion/create')}}">Acta de Reunion Nueva</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>CI</th>
-                                        <th>Nombre</th>
-                                        <th>Telefono</th>
-                                        <th>Email</th>
-                                        <th>Estado</th>
-                                        <th>Direccion</th>
-                                        <th>Fecha de Afiliacion</th>
-                                        <th>N° Puesto</th>
-                                        <th>Tipo de Socio</th>
-                                        <th>Fecha de Inicio</th>
+                                        <th>N° Acta</th>
+                                        <th>Fecha de Reunion</th>
+                                        <th>Descripcion</th> 
+                                        <th>Empleado</th> 
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($socio as $socio)
+                                    @foreach ($actaReunion as $actaReunion)
                                         <tr>
-                                            <td>{{ $socio->ci }}</td>
-                                            <td>{{ $socio->nombre }}</td>
-                                            <td>{{ $socio->telefono }}</td>
-                                            <td>{{ $socio->email }}</td>
-                                            <td>{{ $socio->estado }}</td>
-                                            <td>{{ $socio->direccion }}</td>
-                                            <td>{{ $socio->fecha_afiliacion }}</td>
-                                            <td>{{ $socio->nro_puesto }}</td>
-                                            <td>{{ $socio->tipo_socio }}</td>
-                                            <td>{{ $socio->fecha_inicio }}</td>
-                                            {{-- <td>
-                                            <a href="{{url('/empleado/'.empleado->ci.'/edit')}}">
-                                                Editar
-                                            </a>
-                                        </td> --}}
+                                            <td>{{ $actaReunion->nro_acta }}</td>
+                                            <td>{{ $actaReunion->fecha_reunion }}</td>
+                                            <td>{{ $actaReunion->descripcion }}</td> 
+                                            <td>{{ $actaReunion->nombre }}</td> 
+                                            <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ url('/actaReunion/'.$actaReunion->nro_acta.'/edit')}}" class="btn btn-warning">
+                                                        Editar
+                                                    </a>
+                                                    <form action="{{ url('/actaReunion/'.$actaReunion->nro_acta )}}" method="post">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
+                                                        value="Borrar" class="btn btn-danger">
+                                                    </form> 
+                                                </div>
+                                            </td>  
                                         </tr>
                                     @endforeach
                                 </tbody>

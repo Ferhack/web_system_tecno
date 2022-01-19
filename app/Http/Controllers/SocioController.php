@@ -16,8 +16,14 @@ class SocioController extends Controller
      */
     public function index()
     {
-        $datos['socio'] =Socio::all();
-       return view('gestion_de_usuarios_asistencia_y_actas.socio.index',$datos);
+
+        $datos['socio'] = Socio::join('users', 'users.ci', '=', 'socio.ci')
+        ->select('socio.*','users.nombre','users.telefono','users.email','users.estado','users.direccion')
+        ->get();
+        return view('gestion_de_usuarios_asistencia_y_actas.socio.index', $datos);
+   
+    //     $datos['socio'] =Socio::all();
+    //    return view('gestion_de_usuarios_asistencia_y_actas.socio.index',$datos);
     }
 
     /**
@@ -61,24 +67,15 @@ class SocioController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Socio  $socio
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Socio $socio)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Socio  $socio
      * @return \Illuminate\Http\Response
      */
-    public function edit(Socio $socio)
+    public function edit(int $ci)
     {
+        $socio=Socio::findOrFail($ci);
+        return view('gestion_de_usuarios_asistencia_y_actas.socio.edit',$socio);
         //$socio=Socio::findOrFail($ci);
         //return view('gestion_de_usuarios_asistencia_y_actas.socio.edit');
     }
