@@ -12,37 +12,31 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card bg-light border border-2" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold">Aporte</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/aporte/create') }}">Aporte Nuevo</a>
+                        <h4 class="fw-bold">Gestionar Multa</h4>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/multa/create') }}">Nueva Multa</a>
                     </div>
-                    <div class="card-body ">
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>descripcion</th>
-                                        <th>fecha_inicio_pago</th>
                                         <th>monto</th>
-                                        <th>fecha_limite</th>
-                                        <th>porcentaje_mora</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($aporte as $aporte)
+                                    @foreach ($multa as $multa)
                                         <tr>
-                                            <td>{{ $aporte->id }}</td>
-                                            <td>{{ $aporte->descripcion }}</td>
-                                            <td>{{ $aporte->fecha_inicio_pago }}</td>
-                                            <td>{{ $aporte->monto }}</td>
-                                            <td>{{ $aporte->fecha_limite }}</td>
-                                            <td>{{ $aporte->porcentaje_mora }}</td>
+                                            <td>{{ $multa->id }}</td>
+                                            <td>{{ $multa->descripcion }}</td>
+                                            <td>{{ $multa->monto }}</td>
                                             <td>
-                                                <a href="{{ url('/aporte/' . $aporte->id . '/edit') }}"
+                                                <a href="{{ url('/multa/' . $multa->id . '/edit') }}"
                                                     class="btn btn-warning">
                                                     Editar
                                                 </a>
-                                                <form action="{{ url('/aporte/' . $aporte->id) . '/delete' }}"
+                                                <form action="{{ url('/multa/' . $multa->id) . '/delete' }}"
                                                     method="POST">
                                                     @csrf
                                                     <input type="submit" value="Eliminar" class="btn btn-danger">

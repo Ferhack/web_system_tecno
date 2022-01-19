@@ -98,7 +98,7 @@ class AporteController extends Controller
     public function destroy(int $id)
     {
         //TODO: remove an aporte
-        $aporte = Aporte::find($id)->delete();
+        Aporte::find($id)->delete();
         return redirect('/aporte')->with('status', 'Aporte Eliminado sin problemas!');
     }
 }

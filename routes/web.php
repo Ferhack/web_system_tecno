@@ -9,7 +9,7 @@ use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\ActaReunionController;
 use App\Http\Controllers\AporteController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\MultaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +63,18 @@ Route::post('/aporte/{id}/update', [AporteController::class, 'update']);
 
 Route::post('/aporte/{id}/delete', [AporteController::class, 'destroy']);
 
+// MULTA ROUTES
+Route::get('/multa', [MultaController::class, 'index']);
+
+Route::get('/multa/create', [MultaController::class, 'create']);
+
+Route::post('/multa', [MultaController::class, 'store']);
+
+Route::get('/multa/{id}/edit', [MultaController::class, 'edit']);
+
+Route::post('/multa/{id}/update', [MultaController::class, 'update']);
+
+Route::post('/multa/{id}/delete', [MultaController::class, 'destroy']);
+
+// HOME ROUTE
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
