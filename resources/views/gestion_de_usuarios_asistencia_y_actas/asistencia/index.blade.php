@@ -33,17 +33,21 @@
                                             <td>{{ $asistencia->fecha_actividad }}</td>
                                             <td>{{ $asistencia->actividad }}</td> 
                                             <td> 
-                                                <a href="{{ url('/asistencia/'.$asistencia->id.'/edit')}}">
-                                                    
-                                                    Editar
-                                                </a>|
-                                                <form action="{{ url('/asistencia/'.$asistencia->id )}}" method="post">
-                                                    @csrf
-                                                    {{ method_field('DELETE') }}
-                                                    <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                    value="Borrar">
-                                                </form>
-                                            </td>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ url('/asistencia/'.$asistencia->id.'/edit')}}" class="btn btn-warning">
+                                                        Editar
+                                                    </a>
+                                                    <form action="{{ url('/asistencia/'.$asistencia->id )}}" method="post">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
+                                                        value="Borrar" class="btn btn-danger">
+                                                    </form>
+                                                    <a href="#" class="btn btn-primary">
+                                                        Agregar Socio
+                                                    </a>
+                                                </div>
+                                            </td>  
                                         </tr>
                                     @endforeach
                                 </tbody>

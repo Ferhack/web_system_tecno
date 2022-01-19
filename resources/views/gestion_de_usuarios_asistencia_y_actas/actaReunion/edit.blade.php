@@ -6,25 +6,25 @@
         <div class="col-xs|sm|md|lg|xl-1-12">
             <div class="card bg-light border border-2" style="padding: 30px;">
                 <div class="card-header">
-                    <h4 class="fw-bold">Editar Asistencia: {{$asistencia->id}}</h4>
+                    <h4 class="fw-bold">Editar Acta Nro: {{$actaReunion->nro_acta}}</h4>
                 </div>
             
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/asistencia/'.$asistencia->id) }}" class="row g-3">
+                    <form method="POST" action="{{ url('/actaReunion/'.$actaReunion->nro_acta) }}" class="row g-3">
                         @csrf
                         {{ method_field('PUT') }}
-
+                        <div class="row mb-3"></div>
                         <div class="row mb-3">
-                            <label for="fecha_actividad" class="col-md-2 col-form-label ">Fecha de la Actividad </label>
+                            <label for="fecha_reunion" class="col-md-2 col-form-label ">Fecha de la Acta </label>
                             <div class="col-md-10">
-                                <input type="date" name="fecha_actividad" id="fecha_actividad" class = "form-control" required value="{{$asistencia->fecha_actividad}}">    
+                                <input type="date" name="fecha_reunion" id="fecha_reunion" class = "form-control" required value="{{$actaReunion->fecha_reunion}}">    
                             </div>
                         </div> 
                         <br>
                         <div class="row mb-3">
-                            <label for="actividad" class = "col-md-2 col-form-label ">Actividad </label>
+                            <label for="descripcion" class = "col-md-2 col-form-label ">Descripcion </label>
                             <div class="col-md-10">
-                                <input type="text" name="actividad" class = "form-control"  required value="{{$asistencia->actividad}}">
+                                <input type="text" name="descripcion" class = "form-control"  required value="{{$actaReunion->descripcion}}">
                             </div>   
                         </div>
 
@@ -34,10 +34,10 @@
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <div class="col-md-10 offset-md-2">
                                     <input type="submit" value="Guardar Datos" class="btn btn-success">
-                                    <a href="{{ url('/asistencia')}}" class="btn btn-primary">
+                                    <a href="{{ url('/actaReunion')}}" class="btn btn-primary">
                                         Cancelar
                                     </a>
-                                   </div>
+                                    </div>
                             </div>
                         </div>
                     </form>

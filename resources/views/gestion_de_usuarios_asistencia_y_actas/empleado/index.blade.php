@@ -43,17 +43,18 @@
                                             <td>{{ $empleado->fecha_inicio }}</td>
                                             <td>{{ $empleado->fecha_fin }}</td>
                                             <td> 
-                                                <a href="{{ url('/empleado/'.$empleado->ci.'/edit')}}">
-                                                    Editar
-                                                </a>
-                                                |
-                                                <form action="{{ url('/empleado/'.$empleado->ci )}}" method="post">
-                                                    @csrf
-                                                    {{ method_field('DELETE') }}
-                                                    <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                    value="Borrar">
-                                                </form>
-                                            </td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ url('/empleado/'.$empleado->ci.'/edit')}}" class="btn btn-warning">
+                                                        Editar
+                                                    </a>
+                                                    <form action="{{ url('/empleado/'.$empleado->ci )}}" method="post">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
+                                                        value="Borrar" class="btn btn-danger">
+                                                    </form> 
+                                                </div>
+                                            </td>  
                                         </tr>
                                     @endforeach
                                 </tbody>

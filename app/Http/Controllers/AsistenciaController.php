@@ -89,7 +89,7 @@ class AsistenciaController extends Controller
      * @param  \App\Models\Asistencia  $asistencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         Asistencia::destroy($id);
         return redirect('asistencia');
