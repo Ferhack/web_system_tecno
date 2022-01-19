@@ -6,7 +6,8 @@
         </a>
         <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample"
             aria-expanded="false" aria-controls="collapseWidthExample">
-            =
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/UAGRM_Logo_Minimalista_Preciso.png" alt="menu"
+                height="30" width="45">
         </button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
