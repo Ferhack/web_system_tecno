@@ -80,9 +80,9 @@ class EmpleadoController extends Controller
     public function edit(int $ci)
     {
         $datos['empleado'] = Empleado::where('ci', $ci)->first()
-        ->join('users', 'users.ci', '=', 'empleado.ci')
-        ->select('users.nombre','users.telefono','users.email','users.direccion','empleado.fecha_fin')
-        ->get();
+         ->join('users', 'users.ci', '=', 'empleado.ci')
+         ->select('users.nombre','users.telefono','users.email','users.direccion')
+         ->get();
         //$dato['empleado'] = Empleado::where('ci', $ci)->first();
         return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit', $datos);
         //$empleado=Empleado::findOrFail($ci);
