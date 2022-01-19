@@ -7,6 +7,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\SocioController;
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\ActaReunionController;
+use App\Http\Controllers\AporteController;
 use App\Http\Controllers\HomeController;
 
 
@@ -39,7 +40,7 @@ Auth::routes();
 
 Route::get('/asistencia', function () {
     return view('gestion_de_usuarios_asistencia_y_actas.asistencia.index');
-}); 
+});
 
 Route::resource('asistencia', AsistenciaController::class);
 
@@ -49,5 +50,17 @@ Route::get('/actaReunion', function () {
 
 Route::resource('actaReunion', ActaReunionController::class);
 
+// APORTE ROUTES
+Route::get('/aporte', [AporteController::class, 'index']);
+
+Route::get('/aporte/create', [AporteController::class, 'create']);
+
+Route::post('/aporte', [AporteController::class, 'store']);
+
+Route::get('/aporte/{id}/edit', [AporteController::class, 'edit']);
+
+Route::post('/aporte/{id}/update', [AporteController::class, 'update']);
+
+Route::post('/aporte/{id}/delete', [AporteController::class, 'destroy']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
