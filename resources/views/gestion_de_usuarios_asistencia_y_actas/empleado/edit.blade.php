@@ -13,7 +13,7 @@
                     <form method="POST" action="{{ url('/empleado/'.$empleado->ci) }}" class="row g-3">
                         @csrf
                         {{ method_field('PUT') }}
-
+                        <div class="row mb-3"></div>
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-2 col-form-label ">Nombre</label>
                             <div class="col-md-10">
