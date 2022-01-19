@@ -15,7 +15,8 @@ class CreateEgresoTable extends Migration
     {
         Schema::create('egreso', function (Blueprint $table) {
             $table->increments('nro_egreso');
-            $table->string('detalle',255); 
+            $table->string('detalle',255);
+            $table->decimal('monto');
             $table->date('fecha_egreso'); 
             $table->string('actor_receptor',255); 
             $table->integer('ci_empleado')->unsigned();

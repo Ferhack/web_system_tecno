@@ -10,7 +10,7 @@ class Egreso extends Model
     protected $primaryKey = 'nro_egreso';
     protected $table = 'egreso';
     protected $fillable = [
-        'nro_egreso','detalle','fecha_egreso', 'actor_receptor','ci_empleado'
+        'nro_egreso','detalle','monto','fecha_egreso', 'actor_receptor','ci_empleado'
     ];
     public $timestamps = false;
 } 
