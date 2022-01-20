@@ -79,18 +79,8 @@ class EmpleadoController extends Controller
      */
     public function edit(int $ci)
     {
-        // $datos['empleado'] = Empleado::where('ci', $ci)->first()
-        //  ->join('users', 'users.ci', '=', 'empleado.ci')
-        //  ->select('users.nombre','users.telefono','users.email','users.direccion')
-        //  ->get();
-        // //$dato['empleado'] = Empleado::where('ci', $ci)->first();
-        // return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit', $datos);
-        //$empleado=Empleado::findOrFail($ci);
-        // return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit');
-        $user = User::where('ci', $ci)->first()->get();
-        $empleado = Empleado::where('ci', $ci)->first()->get();
-        return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit', ['user' => $user, 'empleado' => $empleado]);
-   
+        $empleado = User::findOrFail($ci);
+        return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit',compact('empleado'));
     }
 
     /**
@@ -100,9 +90,19 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleado $empleado)
-    {
-        return view('gestion_de_usuarios_asistencia_y_actas.empleado.form');
+    public function update(Request $request, int $ci)
+    {    
+        $users = User::find($ci);
+        $users->nombre = $request->nombre;
+        $users->telefono = $request->telefono;
+        $users->email = $request->email;
+        $users->direccion = $request->direccion;
+        $users->tipo_usuario = 'E';
+        $users->save();
+        $empleado = Empleado::find($ci);
+        $empleado->fecha_fin = $request->fecha_fin; 
+        $empleado->save();
+        return redirect('/empleado')->with('status', 'Empleado Actualizado Exitosamente!');
     }
 
     /**
