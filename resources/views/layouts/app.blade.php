@@ -38,6 +38,10 @@
             @endauth
             @yield('content')
         </main>
+        <footer style="text-align: center; background-color: rgb(102, 131, 192); color: white;">
+            <p>Author: Grupo 14SC TECNOWEB-UAGRM-FICCT</p>
+            <p>Cantidad de Vistas: <?php echo $x ?? 0; ?></p>
+        </footer>
     </div>
 </body>
 

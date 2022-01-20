@@ -51,12 +51,6 @@
                                                     <a href="{{ url('/socio/'.$socio->ci.'/edit')}}" class="btn btn-warning">
                                                         Editar
                                                     </a>
-                                                    <form action="{{ url('/socio/'.$socio->ci )}}" method="post">
-                                                        @csrf
-                                                        {{ method_field('DELETE') }}
-                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                        value="Borrar" class="btn btn-danger">
-                                                    </form> 
                                                 </div>
                                             </td>  
                                         </tr>

@@ -17,28 +17,28 @@
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-2 col-form-label ">Nombre</label>
                             <div class="col-md-10">
-                                <input type="text" name="nombre" id="nombre" class = "form-control" required value="{{$empleado->nombre}}">    
+                                <input type="text" name="nombre" id="nombre" class = "form-control" required value="{{$user->nombre}}">    
                             </div>
                         </div> 
                         <br>
                         <div class="row mb-3">
                             <label for="telefono" class = "col-md-2 col-form-label ">Telefono </label>
                             <div class="col-md-10">
-                                <input type="tel" pattern="[0-9]{8}" name="telefono" class = "form-control"  required value="{{$empleado->telefono}}">
+                                <input type="tel" pattern="[0-9]{8}" name="telefono" class = "form-control"  required value="{{$user->telefono}}">
                             </div>   
                         </div>
                         <br/>
                         <div class="row mb-3">
                             <label for="email" class="col-md-2 col-form-label ">Email</label>
                             <div class="col-md-10">
-                                <input type="email" name="email" id="email" class = "form-control" required value="{{$empleado->email}}">    
+                                <input type="email" name="email" id="email" class = "form-control" required value="{{$user->email}}">    
                             </div>
                         </div> 
                         <br>
                         <div class="row mb-3">
                             <label for="direccion" class="col-md-2 col-form-label ">Direccion</label>
                             <div class="col-md-10">
-                                <input type="text" name="direccion" id="direccion" class = "form-control" required value="{{$empleado->direccion}}">    
+                                <input type="text" name="direccion" id="direccion" class = "form-control" required value="{{$user->direccion}}">    
                             </div>
                         </div> 
                         <br/>

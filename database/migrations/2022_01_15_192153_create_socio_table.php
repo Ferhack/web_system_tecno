@@ -16,7 +16,7 @@ class CreateSocioTable extends Migration
         Schema::create('socio', function (Blueprint $table) {
             $table->integer('ci')->unsigned();
             $table->date('fecha_afiliacion'); 
-            $table->integer('nro_puesto'); 
+            $table->integer('nro_puesto')->unique();
             $table->string('tipo_socio',1); 
             $table->date('fecha_inicio'); 
             $table->foreign('ci')->references('ci')->on('users');
