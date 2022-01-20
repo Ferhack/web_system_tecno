@@ -10,10 +10,22 @@
         @endif
         <div class="row">
             <div class="col-xs|sm|md|lg|xl-1-12">
+                <div class="card bg-light" style="padding: 30px;">
+                    <div class="card-body">
+                        Pago N° {{$pago->nro_pago}} <br/>
+                        Socio {{$pago->ci_socio }}<br/>  
+                        Total <b>{{$pago->monto_total}}</b> <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold text-dark">Pagos</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/pago/create')}}">Pago Nuevo</a>
+                        <h4 class="fw-bold text-dark">Multas del Pago N° {{$pago->nro_pago}}</h4>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/multa_pago/'.$pago->nro_pago.'/create')}}">Pagar Multas</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -21,40 +33,25 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Fecha</th>
-                                        <th>Comprobante</th>
-                                        <th>Socio</th>
-                                        <th>Empleado</th>
+                                        <th>Multa</th>
                                         <th>Monto</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pagos as $pago)
+                                    @foreach ($multa_pagos as $multa_pago)
                                         <tr>
-                                            <td>{{ $pago->nro_pago }}</td>
-                                            <td>{{ $pago->fecha_pago }}</td>
-                                            <td>{{ $pago->comprobante }}</td>
-                                            <td>{{ $pago->socio }}</td>
-                                            <td>{{ $pago->empleado }}</td>
-                                            <td>{{ $pago->monto_total }}</td>
+                                            <td>{{ $multa_pago->id_multa }}</td>
+                                            <td>{{ $multa_pago->descripcion }}</td>
+                                            <td>{{ $multa_pago->monto }}</td>
                                             <td> 
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/pago/'.$pago->nro_pago.'/edit')}}" class="btn btn-warning">
-                                                        Editar
-                                                    </a>
-                                                    <form action="{{ url('/pago/'.$pago->nro_pago )}}" method="post">
+                                                    <form action="{{ url('/multa_pago/'.$multa_pago->id )}}" method="post">
                                                         @csrf
                                                         {{ method_field('DELETE') }}
                                                         <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                        value="Borrar" class="btn btn-danger">
+                                                        value="X" class="btn btn-danger">
                                                     </form>
-                                                    <a href="{{ url('/aporte_pago/'.$pago->nro_pago.'')}}" class="btn btn-secondary">
-                                                        Aportes
-                                                    </a>
-                                                    <a href="{{ url('/multa_pago/'.$pago->nro_pago.'')}}" class="btn btn-secondary">
-                                                        Multas
-                                                    </a>
                                                 </div>
                                             </td> 
                                         </tr>
@@ -66,5 +63,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

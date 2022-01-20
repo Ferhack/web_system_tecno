@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MultaPago extends Model
+class AsistenciaSocio extends Model
 {
-    protected $primaryKey = ['nro_pago', 'id_multa'];
-    protected $table = 'multa_pago';
+    protected $primaryKey = 'id';
+    protected $table = 'asistencia_socio';
     protected $fillable = [
-        'nro_pago','id_multa'
+        'id', 'ci_socio', 'id_asistencia'
     ];
     public $timestamps = false;
-} 
+}

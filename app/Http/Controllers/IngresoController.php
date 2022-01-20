@@ -56,7 +56,7 @@ class IngresoController extends Controller
     public function store(Request $request)
     {
         $this->ingreso->detalle = $request->detalle;
-        $this->ingreso->fecha_ingreso = date('d/m/Y');
+        $this->ingreso->fecha_ingreso = date('Y/m/d');
         $this->ingreso->monto = $request->monto;
         $this->ingreso->ci_empleado = $request->ci_empleado;
         $this->ingreso->save();

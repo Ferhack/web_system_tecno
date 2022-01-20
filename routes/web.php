@@ -14,7 +14,10 @@ use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\EgresoController;
 use App\Http\Controllers\MultaSocioController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\AportePagoController;
+use App\Http\Controllers\MultaPagoController;
 use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\AsistenciaSocioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,10 +91,30 @@ Route::resource('egreso', EgresoController::class);
 // PAGO ROUTE
 Route::resource('pago', PagoController::class);
 
+Route::get('/aporte_pago/{nro_pago}', [AportePagoController::class, 'index']);
+Route::get('/aporte_pago/{nro_pago}/create', [AportePagoController::class, 'create']);
+Route::post('/aporte_pago/{nro_pago}/create', [AportePagoController::class, 'store']);
+Route::delete('/aporte_pago/{nro_pago}/{id_aporte}', [AportePagoController::class, 'destroy']);
+
+Route::get('/multa_pago/{nro_pago}', [MultaPagoController::class, 'index']);
+Route::get('/multa_pago/{nro_pago}/create', [MultaPagoController::class, 'create']);
+Route::post('/multa_pago/{nro_pago}/create', [MultaPagoController::class, 'store']);
+Route::delete('/multa_pago/{nro_pago}', [MultaPagoController::class, 'destroy']);
+
 // REPORTE ROUTE
 Route::get('/reporte_ingreso', [ReportesController::class, 'indexIngreso']);
 
 Route::get('/reporte_egreso', [ReportesController::class, 'indexEgreso']);
 
+// REPORTE ROUTE
+Route::get('/asistencia_socio/{id}', [AsistenciaSocioController::class, 'index']);
+Route::get('/asistencia_socio/create/{id}', [AsistenciaSocioController::class, 'create']);
+Route::post('/asistencia_socio/create/{id}', [AsistenciaSocioController::class, 'store']);
+Route::post('/asistencia_socio/{id}/delete/{id_asistencia}', [AsistenciaSocioController::class, 'destroy']);
+
+
 // HOME ROUTE
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+

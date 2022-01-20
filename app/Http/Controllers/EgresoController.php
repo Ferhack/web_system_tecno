@@ -54,7 +54,7 @@ class EgresoController extends Controller
     public function store(Request $request)
     {
         $this->egreso->detalle = $request->detalle;
-        $this->egreso->fecha_egreso = date('d/m/Y');
+        $this->egreso->fecha_egreso = date('Y/m/d');
         $this->egreso->monto = $request->monto;
         $this->egreso->actor_receptor = $request->actor_receptor;
         $this->egreso->ci_empleado = $request->ci_empleado;
