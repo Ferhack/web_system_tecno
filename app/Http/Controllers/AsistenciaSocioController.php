@@ -19,7 +19,7 @@ class AsistenciaSocioController extends Controller
     {
         $asistencia_socio = DB::table('asistencia_socio')
             ->join('users', 'users.ci', '=', 'asistencia_socio.ci_socio')
-            ->where('id_multa', '=', $id)
+            ->where('id_asistencia', '=', $id)
             ->select('users.nombre', 'users.ci', 'asistencia_socio.id', 'asistencia_socio.id_asistencia')->get();
         // echo $asistencia_socio;
         return view('gestion_de_usuarios_asistencia_y_actas.asistencia_socio.index', [
@@ -53,7 +53,7 @@ class AsistenciaSocioController extends Controller
     {
         $asistencia_socio = new AsistenciaSocio();
         $asistencia_socio->ci_socio = $request->ci_socio;
-        $asistencia_socio->id_multa = $id;
+        $asistencia_socio->id_asistencia = $id;
         $asistencia_socio->save();
         return redirect('/asistencia_socio/' . $id)->with('status', 'Socio agregado a la asistencia correctamente!');
     
@@ -69,6 +69,5 @@ class AsistenciaSocioController extends Controller
     {
         AsistenciaSocio::find($id)->delete();
         return redirect('/asistencia_socio/' . $idAsistencia)->with('status', 'Socio eliminado de la asistencia correctamente!');
-   
     }
 }

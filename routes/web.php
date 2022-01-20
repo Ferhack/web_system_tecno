@@ -17,6 +17,7 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\AportePagoController;
 use App\Http\Controllers\MultaPagoController;
 use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\AsistenciaSocioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,6 +105,13 @@ Route::delete('/multa_pago/{nro_pago}', [MultaPagoController::class, 'destroy'])
 Route::get('/reporte_ingreso', [ReportesController::class, 'indexIngreso']);
 
 Route::get('/reporte_egreso', [ReportesController::class, 'indexEgreso']);
+
+// REPORTE ROUTE
+Route::get('/asistencia_socio/{id}', [AsistenciaSocioController::class, 'index']);
+Route::get('/asistencia_socio/create/{id}', [AsistenciaSocioController::class, 'create']);
+Route::post('/asistencia_socio/create/{id}', [AsistenciaSocioController::class, 'store']);
+Route::post('/asistencia_socio/{id}/delete/{id_asistencia}', [AsistenciaSocioController::class, 'destroy']);
+
 
 // HOME ROUTE
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

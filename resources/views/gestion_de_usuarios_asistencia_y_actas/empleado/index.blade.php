@@ -46,13 +46,7 @@
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <a href="{{ url('/empleado/'.$empleado->ci.'/edit')}}" class="btn btn-warning">
                                                         Editar
-                                                    </a>
-                                                    <form action="{{ url('/empleado/'.$empleado->ci )}}" method="post">
-                                                        @csrf
-                                                        {{ method_field('DELETE') }}
-                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                        value="Borrar" class="btn btn-danger">
-                                                    </form> 
+                                                    </a> 
                                                 </div>
                                             </td>  
                                         </tr>

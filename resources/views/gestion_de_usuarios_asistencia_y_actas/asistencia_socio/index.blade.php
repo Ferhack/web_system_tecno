@@ -14,8 +14,11 @@
                     <div class="card-header">
                         <h4 class="fw-bold">Lista de Asistencia de Socios</h4>
                         <a class="btn btn-outline-success float-end"
-                            href="{{ url('/asistencia_socio/create/' . $id_asistencia) }}">Asignar
-                            Socio</a>
+                            href="{{ url('/asistencia_socio/create/' . $id_asistencia) }}">Añadir Socio
+                        </a>
+                        <a href="{{ url('/asistencia') }}" class="btn btn-primary">
+                            Volver
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -33,9 +36,8 @@
                                             <td>{{ $asistencia_socio->ci }}</td>
                                             <td>{{ $asistencia_socio->nombre }}</td>
                                             <td>
-                                                <form action="{{ url('/asistencia_socio/'.$asistencia_socio->id )}}" method="post">
-                                                    @csrf
-                                                    {{ method_field('DELETE') }}
+                                                <form action="{{ url('/asistencia_socio/' . $asistencia_socio->id . '/delete/' . $asistencia_socio->id_asistencia)}}" method="post">
+                                                    @csrf 
                                                     <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
                                                     value="Borrar" class="btn btn-danger">
                                                 </form> 
