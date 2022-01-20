@@ -45,7 +45,7 @@
                         <div class="row mb-3">
                             <label for="fecha_fin" class="col-md-2 col-form-label ">Fecha Fin</label>
                             <div class="col-md-10">
-                                <input type="date" name="fecha_fin" id="fecha_fin" class = "form-control" required value="{{$empleado->fecha_fin}}">    
+                                <input type="date" name="fecha_fin" id="fecha_fin" class = "form-control" required value="{{$user->fecha_fin}}">    
                             </div>
                         </div> 
                         <div class="row mb-0">

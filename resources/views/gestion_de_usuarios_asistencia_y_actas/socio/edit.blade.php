@@ -45,11 +45,11 @@
                         <div class="row mb-3">
                             <label for="fecha_inicio" class="col-md-2 col-form-label ">Fecha Inicio</label>
                             <div class="col-md-4">
-                                <input type="date" name="fecha_inicio" id="fecha_inicio" class = "form-control" required value="{{$socio->fecha_inicio}}">    
+                                <input type="date" name="fecha_inicio" id="fecha_inicio" class = "form-control" required value="{{$user->fecha_inicio}}">    
                             </div>
                             <label for="nro_puesto" class="col-md-2 col-form-label ">Puesto</label>
                             <div class="col-md-4">
-                                <input type="number" name="nro_puesto" id="nro_puesto" placeholder="256" class = "form-control" required value="{{$socio->nro_puesto}}">    
+                                <input type="number" name="nro_puesto" id="nro_puesto" placeholder="256" class = "form-control" required value="{{$user->nro_puesto}}">    
                             </div>  
                         </div> 
                         <div class="row mb-0">

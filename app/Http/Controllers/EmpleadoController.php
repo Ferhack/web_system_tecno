@@ -80,7 +80,8 @@ class EmpleadoController extends Controller
     public function edit(int $ci)
     {
         $empleado = User::findOrFail($ci);
-        return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit',compact('empleado'));
+        $user = Empleado::findOrFail($ci);
+        return view('gestion_de_usuarios_asistencia_y_actas.empleado.edit',compact('empleado', 'user'));
     }
 
     /**

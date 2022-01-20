@@ -75,8 +75,9 @@ class SocioController extends Controller
     public function edit(int $ci)
     {
         $socio=User::findOrFail($ci);
-        return view('gestion_de_usuarios_asistencia_y_actas.socio.edit',compact('socio'));
-    }
+        $user = Socio::findOrFail($ci);
+        return view('gestion_de_usuarios_asistencia_y_actas.socio.edit',compact('socio', 'user'));
+    } 
 
     /**
      * Update the specified resource in storage.
