@@ -32,6 +32,7 @@ class AportePagoController extends Controller
     {
         $pago = Pago::where('nro_pago', $nro_pago)->first();
         $aporte_pagos = $this->aporte_pago->join('aporte', 'aporte.id', '=', 'aporte_pago.id_aporte')
+                        ->where('aporte_pago.nro_pago', '=', $nro_pago)
                         ->select('aporte_pago.*', 'aporte.descripcion', 'aporte.monto', 'aporte.porcentaje_mora')
                         ->get();
         return view('gestion_de_pago_de_aportes.pago.aporte_pago.index', ['pago'=>$pago, 'aporte_pagos'=>$aporte_pagos]);

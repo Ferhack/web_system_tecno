@@ -27,6 +27,9 @@
                             <br />
                             <div class="row mb-0">
                                 <div class="col-md-10 offset-md-2">
+                                    <a href="{{ url('/aporte_pago/'.$nro_pago.'')}}" class="btn btn-primary">
+                                        Volver
+                                    </a>
                                     <input type="submit" value="Pagar" class="btn btn-success">
                                 </div>
                             </div>

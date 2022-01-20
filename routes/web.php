@@ -99,7 +99,7 @@ Route::delete('/aporte_pago/{nro_pago}/{id_aporte}', [AportePagoController::clas
 Route::get('/multa_pago/{nro_pago}', [MultaPagoController::class, 'index']);
 Route::get('/multa_pago/{nro_pago}/create', [MultaPagoController::class, 'create']);
 Route::post('/multa_pago/{nro_pago}/create', [MultaPagoController::class, 'store']);
-Route::delete('/multa_pago/{nro_pago}', [MultaPagoController::class, 'destroy']);
+Route::delete('/multa_pago/{nro_pago}/{id_multa}', [MultaPagoController::class, 'destroy']);
 
 // REPORTE ROUTE
 Route::get('/reporte_ingreso', [ReportesController::class, 'indexIngreso']);
