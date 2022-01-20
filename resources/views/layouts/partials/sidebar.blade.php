@@ -43,11 +43,19 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="/reporte_ingreso" class="nav-link">
                             <svg class="bi me-2" width="16" height="16">
                                 <use xlink:href="#people-circle" />
                             </svg>
-                            Customers
+                            Reporte de Ingreso
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/reporte_egreso" class="nav-link">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#people-circle" />
+                            </svg>
+                            Reporte de Egresos
                         </a>
                     </li>
                 </ul>
