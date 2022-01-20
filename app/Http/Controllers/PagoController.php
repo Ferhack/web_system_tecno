@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Pago;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PagoController extends Controller
 {
@@ -62,17 +61,6 @@ class PagoController extends Controller
         $this->pago->ci_socio = $request->ci_socio;
         $this->pago->save();
         return redirect('/pago')->with('status', 'Pago CREADO Exitosamente!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pago  $pago
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pago $pago)
-    {
-        //
     }
 
     /**
