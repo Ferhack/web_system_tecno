@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MultaController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\EgresoController;
+use App\Http\Controllers\MultaSocioController;
 use App\Http\Controllers\ReportesController;
 
 /*
@@ -38,7 +39,7 @@ Route::resource('empleado', EmpleadoController::class);
 Route::resource('socio', SocioController::class);
 
 // ASISTENCIA ROUTE
-Route::resource('asistencia', AsistenciaController::class); 
+Route::resource('asistencia', AsistenciaController::class);
 
 // ACTA DE REUNION ROUTE
 Route::resource('actaReunion', ActaReunionController::class);
@@ -68,6 +69,14 @@ Route::get('/multa/{id}/edit', [MultaController::class, 'edit']);
 Route::post('/multa/{id}/update', [MultaController::class, 'update']);
 
 Route::post('/multa/{id}/delete', [MultaController::class, 'destroy']);
+
+Route::get('/multa_socio/{id}', [MultaSocioController::class, 'index']);
+
+Route::get('/multa_socio/create/{id}', [MultaSocioController::class, 'create']);
+
+Route::post('/multa_socio/create/{id}', [MultaSocioController::class, 'store']);
+
+Route::post('/multa_socio/{id}/delete/{id_multa}', [MultaSocioController::class, 'destroy']);
 
 // INGRESO ROUTE
 Route::resource('ingreso', IngresoController::class);

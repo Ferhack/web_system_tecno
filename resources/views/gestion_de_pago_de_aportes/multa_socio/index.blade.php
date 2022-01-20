@@ -12,8 +12,10 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card bg-light border border-2" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold">Gestionar Multa</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/multa/create') }}">Nueva Multa</a>
+                        <h4 class="fw-bold">Lista Socios a Multa</h4>
+                        <a class="btn btn-outline-success float-end"
+                            href="{{ url('/multa_socio/create/' . $id_multa) }}">Asignar
+                            Socio</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -21,29 +23,23 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>descripcion</th>
-                                        <th>monto</th>
+                                        <th>CI</th>
+                                        <th>Socio</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($multa as $multa)
+                                    @foreach ($multa_socio as $multa)
                                         <tr>
                                             <td>{{ $multa->id }}</td>
-                                            <td>{{ $multa->descripcion }}</td>
-                                            <td>{{ $multa->monto }}</td>
+                                            <td>{{ $multa->ci }}</td>
+                                            <td>{{ $multa->nombre }}</td>
                                             <td>
-                                                <a href="{{ url('/multa/' . $multa->id . '/edit') }}"
-                                                    class="btn btn-warning">
-                                                    Editar
-                                                </a>
-                                                <form action="{{ url('/multa/' . $multa->id) . '/delete' }}"
+                                                <form
+                                                    action="{{ url('/multa_socio/' . $multa->id . '/delete/' . $multa->id_multa) }}"
                                                     method="POST">
                                                     @csrf
                                                     <input type="submit" value="Eliminar" class="btn btn-danger">
                                                 </form>
-                                                <a href="{{ url('/multa_socio/' . $multa->id) }}" class="btn btn-info">
-                                                    Socios Asignados
-                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
