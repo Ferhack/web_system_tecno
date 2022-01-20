@@ -43,7 +43,7 @@
                                                         <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
                                                         value="Borrar" class="btn btn-danger">
                                                     </form>
-                                                    <a href="#" class="btn btn-primary">
+                                                    <a href="{{ url('/asistencia_socio/' . $asistencia->id.'/index') }}" class="btn btn-primary">
                                                         Agregar Socio
                                                     </a>
                                                 </div>

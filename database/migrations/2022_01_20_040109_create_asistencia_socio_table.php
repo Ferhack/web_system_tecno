@@ -14,6 +14,7 @@ class CreateAsistenciaSocioTable extends Migration
     public function up()
     {
         Schema::create('asistencia_socio', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('ci_socio')->unsigned();
             $table->foreign('ci_socio')->references('ci')->on('users');
             $table->integer('id_asistencia')->unsigned();

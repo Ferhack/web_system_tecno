@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AsistenciaSocio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 
 class AsistenciaSocioController extends Controller
 {
@@ -12,9 +15,17 @@ class AsistenciaSocioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(int $id)
     {
-        //
+        $asistencia_socio = DB::table('asistencia_socio')
+            ->join('users', 'users.ci', '=', 'asistencia_socio.ci_socio')
+            ->where('id_multa', '=', $id)
+            ->select('users.nombre', 'users.ci', 'asistencia_socio.id', 'asistencia_socio.id_asistencia')->get();
+        // echo $asistencia_socio;
+        return view('gestion_de_usuarios_asistencia_y_actas.asistencia_socio.index', [
+            'asistencia_socio' => $asistencia_socio,
+            'id_asistencia' => $id
+        ]);
     }
 
     /**
@@ -22,9 +33,14 @@ class AsistenciaSocioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(int $id)
     {
-        //
+        $user_list_socio = User::where('tipo_usuario', '=', 'S')->get();
+        // echo $user_list_socio;
+        return view('gestion_de_usuarios_asistencia_y_actas.asistencia_socio.create', [
+            'user_list_socio' => $user_list_socio,
+            'id_asistencia' => $id
+        ]);
     }
 
     /**
@@ -33,43 +49,14 @@ class AsistenciaSocioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, int $id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AsistenciaSocio  $asistenciaSocio
-     * @return \Illuminate\Http\Response
-     */
-    public function show(AsistenciaSocio $asistenciaSocio)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AsistenciaSocio  $asistenciaSocio
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AsistenciaSocio $asistenciaSocio)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AsistenciaSocio  $asistenciaSocio
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, AsistenciaSocio $asistenciaSocio)
-    {
-        //
+        $asistencia_socio = new AsistenciaSocio();
+        $asistencia_socio->ci_socio = $request->ci_socio;
+        $asistencia_socio->id_multa = $id;
+        $asistencia_socio->save();
+        return redirect('/asistencia_socio/' . $id)->with('status', 'Socio agregado a la asistencia correctamente!');
+    
     }
 
     /**
@@ -78,8 +65,10 @@ class AsistenciaSocioController extends Controller
      * @param  \App\Models\AsistenciaSocio  $asistenciaSocio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AsistenciaSocio $asistenciaSocio)
+    public function destroy(int $id, int $idAsistencia)
     {
-        //
+        AsistenciaSocio::find($id)->delete();
+        return redirect('/asistencia_socio/' . $idAsistencia)->with('status', 'Socio eliminado de la asistencia correctamente!');
+   
     }
 }

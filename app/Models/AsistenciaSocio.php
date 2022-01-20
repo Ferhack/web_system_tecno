@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AsistenciaSocio extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'id';
+    protected $table = 'asistencia_socio';
+    protected $fillable = [
+        'id', 'ci_socio', 'id_asistencia'
+    ];
+    public $timestamps = false;
 }
