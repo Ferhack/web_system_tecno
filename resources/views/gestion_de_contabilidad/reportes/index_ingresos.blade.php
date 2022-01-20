@@ -28,15 +28,27 @@
         </div>
     </div>
     <script>
+        function random_rgba(countColors) {
+            var listColors = [];
+            for (let index = 0; index < countColors; index++) {
+                var o = Math.round,
+                    r = Math.random,
+                    s = 255;
+                listColors.push('rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(1) + ')');
+            }
+            return listColors;
+        }
+
         let dataValues = {!! json_encode($listReportResult) !!};
         let dataLabels = {!! json_encode($listReportDetail) !!};
+        let dataColors = this.random_rgba(dataValues.length);
 
         const data = {
             labels: dataLabels,
             datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                label: 'Porcentaje de ingresos por item (%)',
+                backgroundColor: dataColors,
+                borderColor: dataColors,
                 data: dataValues
             }]
         };
@@ -57,7 +69,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Chart.js Horizontal Bar Chart'
+                    text: 'Ingreso Porcentual de la Asociación por Item'
                 }
             }
         }
