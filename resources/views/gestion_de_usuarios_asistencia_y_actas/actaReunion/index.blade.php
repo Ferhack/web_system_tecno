@@ -54,7 +54,30 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><footer id="footer" class="site-footer dark-skin dark-widgetized-area">
+                        
+                <?php
+    session_start();
+    if (isset($_SESSION['reporte_ingreso_view'])) {
+        $_SESSION['reporte_ingreso_view'] = $_SESSION['reporte_ingreso_view'] + 1;
+    } else {
+        $_SESSION['reporte_ingreso_view'] = 1;
+    }
+    ?>
+
+    <p>Cantidad de Vistas: <?php echo $_SESSION['reporte_ingreso_view']; ?></p>
+                <div id="site-info" class="site-info site-info-layout-2">
+                    <div class="container">
+                        <div class="tie-row">
+                            <div class="tie-col-md-12">
+                                <div class="copyright-text copyright-text-first">© Copyright 2021, Todos los derechos reservados </div></li>
+                                    <li id="menu-item-1239"><a href="mailto:grupo14sc@tecnoweb.org.bo">Contáctanos con un correo</a></li> 
+                                </ul></div>
+                            </div>
+                        </div>
+                    </div>
+            </footer>
         </div>
     </div>
+    
 @endsection

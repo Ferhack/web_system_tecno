@@ -82,3 +82,6 @@ Route::get('/reporte_egreso', [ReportesController::class, 'indexEgreso']);
 
 // HOME ROUTE
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+
