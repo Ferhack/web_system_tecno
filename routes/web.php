@@ -14,6 +14,8 @@ use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\EgresoController;
 use App\Http\Controllers\MultaSocioController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\AportePagoController;
+use App\Http\Controllers\MultaPagoController;
 use App\Http\Controllers\ReportesController;
 
 /*
@@ -87,6 +89,16 @@ Route::resource('egreso', EgresoController::class);
 
 // PAGO ROUTE
 Route::resource('pago', PagoController::class);
+
+Route::get('/aporte_pago/{nro_pago}', [AportePagoController::class, 'index']);
+Route::get('/aporte_pago/{nro_pago}/create', [AportePagoController::class, 'create']);
+Route::post('/aporte_pago/{nro_pago}/create', [AportePagoController::class, 'store']);
+Route::delete('/aporte_pago/{nro_pago}/{id_aporte}', [AportePagoController::class, 'destroy']);
+
+Route::get('/multa_pago/{nro_pago}', [MultaPagoController::class, 'index']);
+Route::get('/multa_pago/{nro_pago}/create', [MultaPagoController::class, 'create']);
+Route::post('/multa_pago/{nro_pago}/create', [MultaPagoController::class, 'store']);
+Route::delete('/multa_pago/{nro_pago}', [MultaPagoController::class, 'destroy']);
 
 // REPORTE ROUTE
 Route::get('/reporte_ingreso', [ReportesController::class, 'indexIngreso']);

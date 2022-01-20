@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class MultaPago extends Model
 {
-    protected $primaryKey = 'id';
+    protected $primaryKey = ['nro_pago', 'id_multa'];
     protected $table = 'multa_pago';
     protected $fillable = [
-        'id','nro_pago','id_multa'
+        'nro_pago','id_multa'
     ];
     public $timestamps = false;
 } 

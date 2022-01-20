@@ -14,11 +14,12 @@ class CreateAportePagoTable extends Migration
     public function up()
     {
         Schema::create('aporte_pago', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('nro_pago')->unsigned();
             $table->foreign('nro_pago')->references('nro_pago')->on('pago');
             $table->integer('id_aporte')->unsigned();
-            $table->foreign('id_aporte')->references('id')->on('aporte'); 
+            $table->foreign('id_aporte')->references('id')->on('aporte');
+            $table->decimal('monto_mora');
+            $table->primary(['nro_pago', 'id_aporte']);
         });
     } 
 

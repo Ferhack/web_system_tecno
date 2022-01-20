@@ -14,11 +14,11 @@ class CreateMultaPagoTable extends Migration
     public function up()
     {
         Schema::create('multa_pago', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('nro_pago')->unsigned();
             $table->foreign('nro_pago')->references('nro_pago')->on('pago');
             $table->integer('id_multa')->unsigned();
             $table->foreign('id_multa')->references('id')->on('multa'); 
+            $table->primary(['nro_pago', 'id_multa']);
         }); 
     }
 

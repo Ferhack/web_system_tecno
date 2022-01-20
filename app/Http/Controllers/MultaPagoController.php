@@ -3,18 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\MultaPago;
+use App\Models\Pago;
 use Illuminate\Http\Request;
 
 class MultaPagoController extends Controller
 {
+    private $multa_pago;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->multa_pago = new MultaPago();
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($nro_pago)
     {
-        //
+        $pago = Pago::where('nro_pago', $nro_pago)->first();
+        $multa_pagos = MultaPago::join('multa', 'multa.id', '=', 'multa_pago.id_multa')
+        ->select('multa_pago.*', 'multa.descripcion', 'multa.monto')
+        ->get();
+        return view('gestion_de_pago_de_aportes.pago.multa_pago.index', ['pago'=>$pago, 'multa_pagos'=>$multa_pagos]);
     }
 
     /**
