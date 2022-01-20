@@ -46,7 +46,7 @@
                                             <td>{{ $multa_pago->monto }}</td>
                                             <td> 
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <form action="{{ url('/multa_pago/'.$multa_pago->id )}}" method="post">
+                                                    <form action="{{ url('/multa_pago/'.$pago->nro_pago.'/'.$multa_pago->id_multa )}}" method="post">
                                                         @csrf
                                                         {{ method_field('DELETE') }}
                                                         <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 

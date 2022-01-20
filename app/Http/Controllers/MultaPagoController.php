@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MultaPago;
+use App\Models\Multa;
 use App\Models\Pago;
 use Illuminate\Http\Request;
 
@@ -40,9 +41,14 @@ class MultaPagoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($nro_pago)
     {
-        //
+        $pago = Pago::find($nro_pago)->first();
+        $multas = Multa::join('multa_socio', 'multa.id', '=', 'multa_socio.id_multa')
+        ->where('multa_socio.ci_socio', $pago->ci_socio)
+        ->select('multa.*')
+        ->get();
+        return view('gestion_de_pago_de_aportes.pago.multa_pago.create', ['multas'=>$multas, 'nro_pago'=>$nro_pago]);
     }
 
     /**
@@ -51,43 +57,12 @@ class MultaPagoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, int $nro_pago)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MultaPago  $multaPago
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MultaPago $multaPago)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MultaPago  $multaPago
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MultaPago $multaPago)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MultaPago  $multaPago
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MultaPago $multaPago)
-    {
-        //
+        $this->multa_pago->nro_pago = $nro_pago;
+        $this->multa_pago->id_multa = $request->id_multa;
+        $this->multa_pago->save();
+        return redirect('/multa_pago/'.$nro_pago.'');
     }
 
     /**
@@ -96,8 +71,9 @@ class MultaPagoController extends Controller
      * @param  \App\Models\MultaPago  $multaPago
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MultaPago $multaPago)
+    public function destroy(int $nro_pago, int $id_multa)
     {
-        //
+        $this->multa_pago->where('nro_pago', $nro_pago)->where('id_multa', $id_multa)->delete();
+        return redirect('/multa_pago/'.$nro_pago.'');
     }
 }

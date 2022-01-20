@@ -12,5 +12,7 @@ class MultaPago extends Model
     protected $fillable = [
         'nro_pago','id_multa'
     ];
+
+    public $incrementing = false;
     public $timestamps = false;
 } 
