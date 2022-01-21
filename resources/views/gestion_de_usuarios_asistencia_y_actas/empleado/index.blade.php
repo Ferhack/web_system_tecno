@@ -38,7 +38,13 @@
                                             <td>{{ $empleado->nombre }}</td>
                                             <td>{{ $empleado->telefono }}</td>
                                             <td>{{ $empleado->email }}</td>
-                                            <td>{{ $empleado->estado }}</td>
+                                            <td>
+                                                @if($empleado->estado =='1')
+                                                    Habilitado
+                                                @else
+                                                    Deshabilitado
+                                                @endif
+                                            </td>
                                             <td>{{ $empleado->direccion }}</td>
                                             <td>{{ $empleado->fecha_inicio }}</td>
                                             <td>{{ $empleado->fecha_fin }}</td>
