@@ -54,7 +54,7 @@ class PagoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->pago->fecha_pago = date('d/m/Y');
+        $this->pago->fecha_pago = date('Y/m/d');
         $this->pago->monto_total = 0;
         $this->pago->comprobante = $request->comprobante;
         $this->pago->ci_empleado = $request->ci_empleado;

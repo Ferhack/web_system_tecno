@@ -74,6 +74,9 @@
                                                         class="btn btn-warning">
                                                         Editar
                                                     </a>
+                                                    <a href="{{ url('/kardex/'.$socio->ci.'')}}" class="btn btn-secondary">
+                                                        kardex
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>
