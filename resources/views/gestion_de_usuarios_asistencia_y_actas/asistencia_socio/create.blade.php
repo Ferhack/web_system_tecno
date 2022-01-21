@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container justify-content-center py-4">
-    <div class="row">
-        <div class="col-xs|sm|md|lg|xl-1-12">
-            <div class="card bg-light border border-2" style="padding: 30px;">
-                <div class="card-header"> 
-                    <h4 class="fw-bold">Añadir Asistencia de Socios</h4>
-                </div>
-            
+    <div class="container justify-content-center py-4">
+        <div class="row">
+            <div class="col-xs|sm|md|lg|xl-1-12">
+                <div class="card bg-light border border-2" style="padding: 30px;">
+                    <div class="card-header">
+                        <h4 class="fw-bold">Añadir Asistencia de Socios</h4>
+                    </div>
+
                     <div class="card-body">
                         <form method="POST" action="{{ url('/asistencia_socio/create/' . $id_asistencia) }}">
                             @csrf
@@ -37,5 +37,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['asistencia_socio_create_view'])) {
+            $_SESSION['asistencia_socio_create_view'] = $_SESSION['asistencia_socio_create_view'] + 1;
+        } else {
+            $_SESSION['asistencia_socio_create_view'] = 1;
+        }
+        $x = $_SESSION['asistencia_socio_create_view'];
+        ?>
     </div>
 @endsection

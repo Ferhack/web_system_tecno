@@ -13,7 +13,7 @@
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
                         <h4 class="fw-bold text-dark">Socios</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/socio/create')}}">Socio Nuevo</a>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/socio/create') }}">Socio Nuevo</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -41,38 +41,41 @@
                                             <td>{{ $socio->telefono }}</td>
                                             <td>{{ $socio->email }}</td>
                                             <td>
-                                                @if($socio->estado =='1')
-                                                <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/socio/'.$socio->ci.'/desactivar') }}" class="btn btn-success">
-                                                        Habilitado
-                                                    </a> 
-                                                </div>
+                                                @if ($socio->estado == '1')
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="{{ url('/socio/' . $socio->ci . '/desactivar') }}"
+                                                            class="btn btn-success">
+                                                            Habilitado
+                                                        </a>
+                                                    </div>
                                                 @else
-                                                <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/socio/'.$socio->ci.'/activar')}}" class="btn btn-default">
-                                                        Deshabilitado
-                                                    </a> 
-                                                </div>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="{{ url('/socio/' . $socio->ci . '/activar') }}"
+                                                            class="btn btn-default">
+                                                            Deshabilitado
+                                                        </a>
+                                                    </div>
                                                 @endif
                                             </td>
                                             <td>{{ $socio->direccion }}</td>
                                             <td>{{ $socio->fecha_afiliacion }}</td>
                                             <td>{{ $socio->nro_puesto }}</td>
                                             <td>
-                                                @if($socio->tipo_socio =='1')
+                                                @if ($socio->tipo_socio == '1')
                                                     Activo
                                                 @else
                                                     Pasivo
                                                 @endif
                                             </td>
                                             <td>{{ $socio->fecha_inicio }}</td>
-                                            <td> 
+                                            <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/socio/'.$socio->ci.'/edit')}}" class="btn btn-warning">
+                                                    <a href="{{ url('/socio/' . $socio->ci . '/edit') }}"
+                                                        class="btn btn-warning">
                                                         Editar
                                                     </a>
                                                 </div>
-                                            </td>  
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -82,5 +85,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['socio_view'])) {
+            $_SESSION['socio_view'] = $_SESSION['socio_view'] + 1;
+        } else {
+            $_SESSION['socio_view'] = 1;
+        }
+        $x = $_SESSION['socio_view'];
+        ?>
     </div>
 @endsection

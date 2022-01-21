@@ -13,7 +13,8 @@
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
                         <h4 class="fw-bold text-dark">Asistencia</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/asistencia/create')}}">Asistencia Nueva</a>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/asistencia/create') }}">Asistencia
+                            Nueva</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -22,7 +23,7 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Fecha</th>
-                                        <th>Actividad</th> 
+                                        <th>Actividad</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -31,23 +32,27 @@
                                         <tr>
                                             <td>{{ $asistencia->id }}</td>
                                             <td>{{ $asistencia->fecha_actividad }}</td>
-                                            <td>{{ $asistencia->actividad }}</td> 
-                                            <td> 
+                                            <td>{{ $asistencia->actividad }}</td>
+                                            <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/asistencia/'.$asistencia->id.'/edit')}}" class="btn btn-warning">
+                                                    <a href="{{ url('/asistencia/' . $asistencia->id . '/edit') }}"
+                                                        class="btn btn-warning">
                                                         Editar
                                                     </a>
-                                                    <form action="{{ url('/asistencia/'.$asistencia->id )}}" method="post">
+                                                    <form action="{{ url('/asistencia/' . $asistencia->id) }}"
+                                                        method="post">
                                                         @csrf
                                                         {{ method_field('DELETE') }}
-                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                        value="Borrar" class="btn btn-danger">
+                                                        <input type="submit"
+                                                            onclick="return confirm('¿Estas Seguro de Eliminarlo?')"
+                                                            value="Borrar" class="btn btn-danger">
                                                     </form>
-                                                    <a href="{{ url('/asistencia_socio/' . $asistencia->id) }}" class="btn btn-primary">
+                                                    <a href="{{ url('/asistencia_socio/' . $asistencia->id) }}"
+                                                        class="btn btn-primary">
                                                         Agregar Socio
-                                                    </a> 
+                                                    </a>
                                                 </div>
-                                            </td>  
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -57,5 +62,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['asistencia_view'])) {
+            $_SESSION['asistencia_view'] = $_SESSION['asistencia_view'] + 1;
+        } else {
+            $_SESSION['asistencia_view'] = 1;
+        }
+        $x = $_SESSION['asistencia_view'];
+        ?>
     </div>
 @endsection

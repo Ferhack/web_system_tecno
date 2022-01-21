@@ -24,7 +24,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
-                                    <tr> 
+                                    <tr>
                                         <th>CI</th>
                                         <th>Socio</th>
                                     </tr>
@@ -36,11 +36,14 @@
                                             <td>{{ $asistencia_socio->ci }}</td>
                                             <td>{{ $asistencia_socio->nombre }}</td>
                                             <td>
-                                                <form action="{{ url('/asistencia_socio/' . $asistencia_socio->id . '/delete/' . $asistencia_socio->id_asistencia)}}" method="post">
-                                                    @csrf 
-                                                    <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                    value="Borrar" class="btn btn-danger">
-                                                </form> 
+                                                <form
+                                                    action="{{ url('/asistencia_socio/' . $asistencia_socio->id . '/delete/' . $asistencia_socio->id_asistencia) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <input type="submit"
+                                                        onclick="return confirm('¿Estas Seguro de Eliminarlo?')"
+                                                        value="Borrar" class="btn btn-danger">
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -51,5 +54,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['asistencia_socio_view'])) {
+            $_SESSION['asistencia_socio_view'] = $_SESSION['asistencia_socio_view'] + 1;
+        } else {
+            $_SESSION['asistencia_socio_view'] = 1;
+        }
+        $x = $_SESSION['asistencia_socio_view'];
+        ?>
     </div>
 @endsection

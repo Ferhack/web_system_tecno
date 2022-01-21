@@ -42,7 +42,8 @@
                             <div class="row mb-3">
                                 <label for="comprobante" class="col-md-2 col-form-label ">Comprobante</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text" id="comprobante" name="comprobante" required placeholder="Nro de comprobante por el deposito realizado en el banco">
+                                    <input class="form-control" type="text" id="comprobante" name="comprobante" required
+                                        placeholder="Nro de comprobante por el deposito realizado en el banco">
                                 </div>
                             </div>
 
@@ -60,5 +61,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['pago_multa_pago_view_create'])) {
+            $_SESSION['pago_multa_pago_view_create'] = $_SESSION['pago_multa_pago_view_create'] + 1;
+        } else {
+            $_SESSION['pago_multa_pago_view_create'] = 1;
+        }
+        $x = $_SESSION['pago_multa_pago_view_create'];
+        ?>
     </div>
 @endsection

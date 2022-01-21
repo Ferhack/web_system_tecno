@@ -51,4 +51,15 @@
             </div>
         </div>
     </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['multa_socio_view'])) {
+            $_SESSION['multa_socio_view'] = $_SESSION['multa_socio_view'] + 1;
+        } else {
+            $_SESSION['multa_socio_view'] = 1;
+        }
+        $x = $_SESSION['multa_socio_view'];
+        ?>
+    </div>
 @endsection

@@ -38,4 +38,15 @@
             </div>
         </div>
     </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['multa_view_create'])) {
+            $_SESSION['multa_view_create'] = $_SESSION['multa_view_create'] + 1;
+        } else {
+            $_SESSION['multa_view_create'] = 1;
+        }
+        $x = $_SESSION['multa_view_create'];
+        ?>
+    </div>
 @endsection

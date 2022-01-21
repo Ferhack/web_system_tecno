@@ -87,5 +87,16 @@
             config
         );
     </script>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['report_egreso'])) {
+            $_SESSION['report_egreso'] = $_SESSION['report_egreso'] + 1;
+        } else {
+            $_SESSION['report_egreso'] = 1;
+        }
+        $x = $_SESSION['report_egreso'];
+        ?>
+    </div>
 
 @endsection

@@ -6,15 +6,15 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card bg-light" style="padding: 30px;">
                     <div class="card-body">
-                        Socio {{$socio->nombre }}<br/>  
-                        CI {{$socio->ci}} <br/>
-                        Telefono {{$socio->telefono}} <br/>
-                        Nro Puesto <b>{{$socio->nro_puesto}}</b> <br/>
+                        Socio {{ $socio->nombre }}<br />
+                        CI {{ $socio->ci }} <br />
+                        Telefono {{ $socio->telefono }} <br />
+                        Nro Puesto <b>{{ $socio->nro_puesto }}</b> <br />
                     </div>
                 </div>
             </div>
         </div>
-        <br/> 
+        <br />
         <div class="row">
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card" style="padding: 30px;">
@@ -49,7 +49,7 @@
                                             <td>{{ $aporte_pago->monto }}</td>
                                             <td>{{ $aporte_pago->porcentaje_mora }}</td>
                                             <td>{{ $aporte_pago->monto_mora }}</td>
-                                            <td>{{ $aporte_pago->monto + $aporte_pago->monto_mora}}</td>
+                                            <td>{{ $aporte_pago->monto + $aporte_pago->monto_mora }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -149,5 +149,16 @@
             </div>
         </div>
         <br />
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['kardex_view'])) {
+            $_SESSION['kardex_view'] = $_SESSION['kardex_view'] + 1;
+        } else {
+            $_SESSION['kardex_view'] = 1;
+        }
+        $x = $_SESSION['kardex_view'];
+        ?>
     </div>
 @endsection

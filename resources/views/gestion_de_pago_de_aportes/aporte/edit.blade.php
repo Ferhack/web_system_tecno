@@ -24,8 +24,8 @@
                                 <label for="fecha_inicio_pago" class="col-md-2 col-form-label ">Fecha Inicio de Pago
                                 </label>
                                 <div class="col-md-10">
-                                    <input type="date" name="fecha_inicio_pago" id="fecha_inicio_pago" class="form-control"
-                                        value="{{ $fecha_inicio_pago }}" required>
+                                    <input type="date" name="fecha_inicio_pago" id="fecha_inicio_pago"
+                                        class="form-control" value="{{ $fecha_inicio_pago }}" required>
                                 </div>
                             </div>
 
@@ -65,5 +65,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['aport_view_edit'])) {
+            $_SESSION['aport_view_edit'] = $_SESSION['aport_view_edit'] + 1;
+        } else {
+            $_SESSION['aport_view_edit'] = 1;
+        }
+        $x = $_SESSION['aport_view_edit'];
+        ?>
     </div>
 @endsection

@@ -13,7 +13,7 @@
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
                         <h4 class="fw-bold text-dark">Egresos</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/egreso/create')}}">Egreso Nuevo</a>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/egreso/create') }}">Egreso Nuevo</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -38,19 +38,22 @@
                                             <td>{{ $egreso->monto }}</td>
                                             <td>{{ $egreso->actor_receptor }}</td>
                                             <td>{{ $egreso->nombre }}</td>
-                                            <td> 
+                                            <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/egreso/'.$egreso->nro_egreso.'/edit')}}" class="btn btn-warning">
+                                                    <a href="{{ url('/egreso/' . $egreso->nro_egreso . '/edit') }}"
+                                                        class="btn btn-warning">
                                                         Editar
                                                     </a>
-                                                    <form action="{{ url('/egreso/'.$egreso->nro_egreso )}}" method="post">
+                                                    <form action="{{ url('/egreso/' . $egreso->nro_egreso) }}"
+                                                        method="post">
                                                         @csrf
                                                         {{ method_field('DELETE') }}
-                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                        value="Borrar" class="btn btn-danger">
+                                                        <input type="submit"
+                                                            onclick="return confirm('¿Estas Seguro de Eliminarlo?')"
+                                                            value="Borrar" class="btn btn-danger">
                                                     </form>
                                                 </div>
-                                            </td> 
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -60,5 +63,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['egreso_view'])) {
+            $_SESSION['egreso_view'] = $_SESSION['egreso_view'] + 1;
+        } else {
+            $_SESSION['egreso_view'] = 1;
+        }
+        $x = $_SESSION['egreso_view'];
+        ?>
     </div>
 @endsection

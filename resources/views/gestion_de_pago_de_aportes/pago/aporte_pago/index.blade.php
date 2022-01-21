@@ -12,9 +12,9 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card bg-light" style="padding: 30px;">
                     <div class="card-body">
-                        Pago N° {{$pago->nro_pago}} <br/>
-                        Socio {{$pago->ci_socio }}<br/>  
-                        Total <b>{{$pago->monto_total}}</b> <br/>
+                        Pago N° {{ $pago->nro_pago }} <br />
+                        Socio {{ $pago->ci_socio }}<br />
+                        Total <b>{{ $pago->monto_total }}</b> <br />
                     </div>
                 </div>
             </div>
@@ -23,8 +23,9 @@
             <div class="col-xs|sm|md|lg|xl-1-12">
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold text-dark">Aportes del Pago N° {{$pago->nro_pago}}</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/aporte_pago/'.$pago->nro_pago.'/create')}}">Pagar Aportes</a>
+                        <h4 class="fw-bold text-dark">Aportes del Pago N° {{ $pago->nro_pago }}</h4>
+                        <a class="btn btn-outline-success float-end"
+                            href="{{ url('/aporte_pago/' . $pago->nro_pago . '/create') }}">Pagar Aportes</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -48,17 +49,20 @@
                                             <td>{{ $aporte_pago->monto }}</td>
                                             <td>{{ $aporte_pago->porcentaje_mora }}</td>
                                             <td>{{ $aporte_pago->monto_mora }}</td>
-                                            <td>{{ $aporte_pago->monto + $aporte_pago->monto_mora}}</td>
-                                            <td> 
+                                            <td>{{ $aporte_pago->monto + $aporte_pago->monto_mora }}</td>
+                                            <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <form action="{{ url('/aporte_pago/'.$pago->nro_pago.'/'.$aporte_pago->id_aporte.'')}}" method="post">
+                                                    <form
+                                                        action="{{ url('/aporte_pago/' . $pago->nro_pago . '/' . $aporte_pago->id_aporte . '') }}"
+                                                        method="post">
                                                         @csrf
                                                         {{ method_field('DELETE') }}
-                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                        value="X" class="btn btn-danger">
+                                                        <input type="submit"
+                                                            onclick="return confirm('¿Estas Seguro de Eliminarlo?')"
+                                                            value="X" class="btn btn-danger">
                                                     </form>
                                                 </div>
-                                            </td> 
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -69,5 +73,16 @@
             </div>
         </div>
 
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['pago_aporte_pago_view'])) {
+            $_SESSION['pago_aporte_pago_view'] = $_SESSION['pago_aporte_pago_view'] + 1;
+        } else {
+            $_SESSION['pago_aporte_pago_view'] = 1;
+        }
+        $x = $_SESSION['pago_aporte_pago_view'];
+        ?>
     </div>
 @endsection

@@ -38,9 +38,22 @@
             @endauth
             @yield('content')
         </main>
-        <footer style="text-align: center; background-color: rgb(102, 131, 192); color: white;">
-            <p>Author: Grupo 14SC TECNOWEB-UAGRM-FICCT</p>
-            <p>Cantidad de Vistas: <?php echo $x ?? 0; ?></p>
+        <footer id="footer" class="site-footer dark-skin dark-widgetized-area">
+            <div id="site-info" class="site-info site-info-layout-2">
+                <div class="container">
+                    <div class="tie-row">
+                        <div class="tie-col-md-12">
+                            <p>Cantidad de Vistas: <?php echo $x; ?></p>
+                            <div class="copyright-text copyright-text-first">© Copyright 2021, Todos los derechos
+                                reservados </div>
+                            </li>
+                            <li id="menu-item-1239"><a href="mailto:grupo14sc@tecnoweb.org.bo">Contáctanos con un
+                                    correo</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 </body>

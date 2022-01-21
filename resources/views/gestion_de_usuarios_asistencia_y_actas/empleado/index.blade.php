@@ -13,7 +13,8 @@
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
                         <h4 class="fw-bold text-dark">Empleados</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/empleado/create')}}">Empleado Nuevo</a>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/empleado/create') }}">Empleado
+                            Nuevo</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -39,30 +40,33 @@
                                             <td>{{ $empleado->telefono }}</td>
                                             <td>{{ $empleado->email }}</td>
                                             <td>
-                                                @if($empleado->estado =='1')
-                                                <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/empleado/'.$empleado->ci.'/desactivar') }}" class="btn btn-success">
-                                                        Habilitado
-                                                    </a> 
-                                                </div>
+                                                @if ($empleado->estado == '1')
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="{{ url('/empleado/' . $empleado->ci . '/desactivar') }}"
+                                                            class="btn btn-success">
+                                                            Habilitado
+                                                        </a>
+                                                    </div>
                                                 @else
-                                                <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/empleado/'.$empleado->ci.'/activar')}}" class="btn btn-default">
-                                                        Deshabilitado
-                                                    </a> 
-                                                </div>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="{{ url('/empleado/' . $empleado->ci . '/activar') }}"
+                                                            class="btn btn-default">
+                                                            Deshabilitado
+                                                        </a>
+                                                    </div>
                                                 @endif
                                             </td>
                                             <td>{{ $empleado->direccion }}</td>
                                             <td>{{ $empleado->fecha_inicio }}</td>
                                             <td>{{ $empleado->fecha_fin }}</td>
-                                            <td> 
+                                            <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/empleado/'.$empleado->ci.'/edit')}}" class="btn btn-warning">
+                                                    <a href="{{ url('/empleado/' . $empleado->ci . '/edit') }}"
+                                                        class="btn btn-warning">
                                                         Editar
-                                                    </a> 
+                                                    </a>
                                                 </div>
-                                            </td>  
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -72,5 +76,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['empleado_view'])) {
+            $_SESSION['empleado_view'] = $_SESSION['empleado_view'] + 1;
+        } else {
+            $_SESSION['empleado_view'] = 1;
+        }
+        $x = $_SESSION['empleado_view'];
+        ?>
     </div>
 @endsection

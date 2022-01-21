@@ -13,7 +13,7 @@
                 <div class="card" style="padding: 30px;">
                     <div class="card-header">
                         <h4 class="fw-bold text-dark">Pagos</h4>
-                        <a class="btn btn-outline-success float-end" href="{{ url('/pago/create')}}">Pago Nuevo</a>
+                        <a class="btn btn-outline-success float-end" href="{{ url('/pago/create') }}">Pago Nuevo</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -38,25 +38,29 @@
                                             <td>{{ $pago->socio }}</td>
                                             <td>{{ $pago->empleado }}</td>
                                             <td>{{ $pago->monto_total }}</td>
-                                            <td> 
+                                            <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('/pago/'.$pago->nro_pago.'/edit')}}" class="btn btn-warning">
+                                                    <a href="{{ url('/pago/' . $pago->nro_pago . '/edit') }}"
+                                                        class="btn btn-warning">
                                                         Editar
                                                     </a>
-                                                    <form action="{{ url('/pago/'.$pago->nro_pago )}}" method="post">
+                                                    <form action="{{ url('/pago/' . $pago->nro_pago) }}" method="post">
                                                         @csrf
                                                         {{ method_field('DELETE') }}
-                                                        <input type="submit" onclick="return confirm('¿Estas Seguro de Eliminarlo?')" 
-                                                        value="Borrar" class="btn btn-danger">
+                                                        <input type="submit"
+                                                            onclick="return confirm('¿Estas Seguro de Eliminarlo?')"
+                                                            value="Borrar" class="btn btn-danger">
                                                     </form>
-                                                    <a href="{{ url('/aporte_pago/'.$pago->nro_pago.'')}}" class="btn btn-secondary">
+                                                    <a href="{{ url('/aporte_pago/' . $pago->nro_pago . '') }}"
+                                                        class="btn btn-secondary">
                                                         Aportes
                                                     </a>
-                                                    <a href="{{ url('/multa_pago/'.$pago->nro_pago.'')}}" class="btn btn-secondary">
+                                                    <a href="{{ url('/multa_pago/' . $pago->nro_pago . '') }}"
+                                                        class="btn btn-secondary">
                                                         Multas
                                                     </a>
                                                 </div>
-                                            </td> 
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -66,5 +70,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['pago_view'])) {
+            $_SESSION['pago_view'] = $_SESSION['pago_view'] + 1;
+        } else {
+            $_SESSION['pago_view'] = 1;
+        }
+        $x = $_SESSION['pago_view'];
+        ?>
     </div>
 @endsection

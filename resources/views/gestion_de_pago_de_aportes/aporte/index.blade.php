@@ -58,4 +58,15 @@
             </div>
         </div>
     </div>
+    <div class="card-footer">
+        <?php
+        session_start();
+        if (isset($_SESSION['aporte_view'])) {
+            $_SESSION['aporte_view'] = $_SESSION['aporte_view'] + 1;
+        } else {
+            $_SESSION['aporte_view'] = 1;
+        }
+        $x = $_SESSION['aporte_view'];
+        ?>
+    </div>
 @endsection
