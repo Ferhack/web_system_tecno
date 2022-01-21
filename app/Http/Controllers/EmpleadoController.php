@@ -118,4 +118,20 @@ class EmpleadoController extends Controller
         User::destroy($ci);
         return redirect('empleado');
     }
+
+    public function desactivar(int $ci)
+    {
+        $users = User::findOrFail($ci);
+        $users->estado = '2';
+        $users->save();
+        return redirect('/empleado')->with('status', 'Empleado Deshabilitado Exitosamente!');
+    }
+
+    public function activar(int $ci)
+    { 
+        $users = User::findOrFail($ci);
+        $users->estado = '1';
+        $users->save();
+        return redirect('/empleado')->with('status', 'Empleado Habilitado Exitosamente!');
+    }
 }

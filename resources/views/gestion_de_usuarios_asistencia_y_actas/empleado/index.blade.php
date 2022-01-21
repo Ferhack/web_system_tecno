@@ -40,9 +40,17 @@
                                             <td>{{ $empleado->email }}</td>
                                             <td>
                                                 @if($empleado->estado =='1')
-                                                    Habilitado
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ url('/empleado/'.$empleado->ci.'/desactivar') }}" class="btn btn-success">
+                                                        Habilitado
+                                                    </a> 
+                                                </div>
                                                 @else
-                                                    Deshabilitado
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ url('/empleado/'.$empleado->ci.'/activar')}}" class="btn btn-default">
+                                                        Deshabilitado
+                                                    </a> 
+                                                </div>
                                                 @endif
                                             </td>
                                             <td>{{ $empleado->direccion }}</td>

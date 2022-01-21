@@ -38,9 +38,12 @@ Route::get('/', function () {
 
 // EMPLEADO ROUTE
 Route::resource('empleado', EmpleadoController::class);
-
+Route::get('/empleado/{ci}/desactivar', [EmpleadoController::class, 'desactivar']);
+Route::get('/empleado/{ci}/activar', [EmpleadoController::class, 'activar']);
 // SOCIO ROUTE
 Route::resource('socio', SocioController::class);
+Route::get('/socio/{ci}/desactivar', [SocioController::class, 'desactivar']);
+Route::get('/socio/{ci}/activar', [SocioController::class, 'activar']);
 
 // ASISTENCIA ROUTE
 Route::resource('asistencia', AsistenciaController::class);

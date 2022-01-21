@@ -114,4 +114,20 @@ class SocioController extends Controller
         User::destroy($ci);
         return redirect('socio');
     }
+
+    public function desactivar(int $ci)
+    {
+        $users = User::findOrFail($ci);
+        $users->estado = '2';
+        $users->save();
+        return redirect('/socio')->with('status', 'Socio Deshabilitado Exitosamente!');
+    }
+
+    public function activar(int $ci)
+    { 
+        $users = User::findOrFail($ci);
+        $users->estado = '1';
+        $users->save();
+        return redirect('/socio')->with('status', 'Socio Habilitado Exitosamente!');
+    }
 }
