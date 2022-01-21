@@ -43,7 +43,7 @@
                 <div class="container">
                     <div class="tie-row">
                         <div class="tie-col-md-12">
-                            <p>Cantidad de Vistas: <?php echo $x; ?></p>
+                            <p>Cantidad de Vistas: <?php echo $x ?? 0; ?></p>
                             <div class="copyright-text copyright-text-first">© Copyright 2021, Todos los derechos
                                 reservados </div>
                             </li>

@@ -10,9 +10,9 @@
         @endif
         <div class="row">
             <div class="col-xs|sm|md|lg|xl-1-12">
-                <div class="card bg-light border border-2" style="padding: 30px;">
+                <div class="card border border-2" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold">Aporte</h4>
+                        <h4 class="fw-bold text-dark">Aporte</h4>
                         <a class="btn btn-outline-success float-end" href="{{ url('/aporte/create') }}">Aporte Nuevo</a>
                     </div>
                     <div class="card-body ">
@@ -38,15 +38,17 @@
                                             <td>{{ $aporte->fecha_limite }}</td>
                                             <td>{{ $aporte->porcentaje_mora }}</td>
                                             <td>
-                                                <a href="{{ url('/aporte/' . $aporte->id . '/edit') }}"
-                                                    class="btn btn-warning">
-                                                    Editar
-                                                </a>
-                                                <form action="{{ url('/aporte/' . $aporte->id) . '/delete' }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    <input type="submit" value="Eliminar" class="btn btn-danger">
-                                                </form>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ url('/aporte/' . $aporte->id . '/edit') }}"
+                                                        class="btn btn-warning">
+                                                        Editar
+                                                    </a>
+                                                    <form action="{{ url('/aporte/' . $aporte->id) . '/delete' }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

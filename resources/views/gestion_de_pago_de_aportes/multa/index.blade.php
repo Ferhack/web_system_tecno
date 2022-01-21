@@ -10,9 +10,9 @@
         @endif
         <div class="row">
             <div class="col-xs|sm|md|lg|xl-1-12">
-                <div class="card bg-light border border-2" style="padding: 30px;">
+                <div class="card border border-2" style="padding: 30px;">
                     <div class="card-header">
-                        <h4 class="fw-bold">Gestionar Multa</h4>
+                        <h4 class="fw-bold text-dark">Gestionar Multa</h4>
                         <a class="btn btn-outline-success float-end" href="{{ url('/multa/create') }}">Nueva Multa</a>
                     </div>
                     <div class="card-body">
@@ -32,18 +32,20 @@
                                             <td>{{ $multa->descripcion }}</td>
                                             <td>{{ $multa->monto }}</td>
                                             <td>
-                                                <a href="{{ url('/multa/' . $multa->id . '/edit') }}"
-                                                    class="btn btn-warning">
-                                                    Editar
-                                                </a>
-                                                <form action="{{ url('/multa/' . $multa->id) . '/delete' }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    <input type="submit" value="Eliminar" class="btn btn-danger">
-                                                </form>
-                                                <a href="{{ url('/multa_socio/' . $multa->id) }}" class="btn btn-info">
-                                                    Socios Asignados
-                                                </a>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ url('/multa/' . $multa->id . '/edit') }}"
+                                                        class="btn btn-warning">
+                                                        Editar
+                                                    </a>
+                                                    <form action="{{ url('/multa/' . $multa->id) . '/delete' }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                                                    </form>
+                                                    <a href="{{ url('/multa_socio/' . $multa->id) }}" class="btn btn-info">
+                                                        Socios Asignados
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
