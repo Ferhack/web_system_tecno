@@ -74,11 +74,10 @@ class SocioController extends Controller
      */
     public function edit(int $ci)
     {
-        $socio=Socio::findOrFail($ci);
-        return view('gestion_de_usuarios_asistencia_y_actas.socio.edit',$socio);
-        //$socio=Socio::findOrFail($ci);
-        //return view('gestion_de_usuarios_asistencia_y_actas.socio.edit');
-    }
+        $socio=User::findOrFail($ci);
+        $user = Socio::findOrFail($ci);
+        return view('gestion_de_usuarios_asistencia_y_actas.socio.edit',compact('socio', 'user'));
+    } 
 
     /**
      * Update the specified resource in storage.
@@ -87,9 +86,20 @@ class SocioController extends Controller
      * @param  \App\Models\Socio  $socio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Socio $socio)
+    public function update(Request $request, int $ci)
     {
-        //return view('gestion_de_usuarios_asistencia_y_actas.socio.form');
+        $users = User::find($ci);
+        $users->nombre = $request->nombre;
+        $users->telefono = $request->telefono;
+        $users->email = $request->email;
+        $users->direccion = $request->direccion;
+        $users->tipo_usuario = 'S';
+        $users->save();
+        $socio = Socio::find($ci);
+        $socio->nro_puesto = $request->nro_puesto; 
+        $socio->fecha_inicio = $request->fecha_inicio; 
+        $socio->save();
+        return redirect('/socio')->with('status', 'Socio Actualizado Exitosamente!');
     }
 
     /**

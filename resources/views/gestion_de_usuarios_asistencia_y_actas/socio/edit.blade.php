@@ -43,24 +43,14 @@
                         </div> 
                         <br/>
                         <div class="row mb-3">
-                            <label for="fecha_afiliacion" class="col-md-2 col-form-label ">Fecha Afiliacion</label>
-                            <div class="col-md-4">
-                                <input type="date" name="fecha_afiliacion" id="fecha_afiliacion" class = "form-control" required value="{{$socio->fecha_afiliacion}}">    
-                            </div>
                             <label for="fecha_inicio" class="col-md-2 col-form-label ">Fecha Inicio</label>
                             <div class="col-md-4">
-                                <input type="date" name="fecha_inicio" id="fecha_inicio" class = "form-control" required value="{{$socio->fecha_inicio}}">    
+                                <input type="date" name="fecha_inicio" id="fecha_inicio" class = "form-control" required value="{{$user->fecha_inicio}}">    
                             </div>
-                        </div> 
-                        <div class="row mb-3">
                             <label for="nro_puesto" class="col-md-2 col-form-label ">Puesto</label>
                             <div class="col-md-4">
-                                <input type="number" name="nro_puesto" id="nro_puesto" class = "form-control" required value="{{$socio->nro_puesto}}">    
+                                <input type="number" name="nro_puesto" id="nro_puesto" placeholder="256" class = "form-control" required value="{{$user->nro_puesto}}">    
                             </div>  
-                            <label for="tipo_socio" class="col-md-2 col-form-label ">Tipo Socio</label>
-                            <div class="col-md-4">
-                                <input type="text" name="tipo_socio" id="tipo_socio" class = "form-control" required value="{{$socio->tipo_socio}}">    
-                            </div> 
                         </div> 
                         <div class="row mb-0">
                             <div class="btn-group" role="group" aria-label="Basic example">

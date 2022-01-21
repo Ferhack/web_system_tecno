@@ -40,11 +40,23 @@
                                             <td>{{ $socio->nombre }}</td>
                                             <td>{{ $socio->telefono }}</td>
                                             <td>{{ $socio->email }}</td>
-                                            <td>{{ $socio->estado }}</td>
+                                            <td>
+                                                @if($socio->estado =='1')
+                                                    Habilitado
+                                                @else
+                                                    Deshabilitado
+                                                @endif
+                                            </td>
                                             <td>{{ $socio->direccion }}</td>
                                             <td>{{ $socio->fecha_afiliacion }}</td>
                                             <td>{{ $socio->nro_puesto }}</td>
-                                            <td>{{ $socio->tipo_socio }}</td>
+                                            <td>
+                                                @if($socio->tipo_socio =='1')
+                                                    Activo
+                                                @else
+                                                    Pasivo
+                                                @endif
+                                            </td>
                                             <td>{{ $socio->fecha_inicio }}</td>
                                             <td> 
                                                 <div class="btn-group" role="group" aria-label="Basic example">

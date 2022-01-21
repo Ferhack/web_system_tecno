@@ -16,42 +16,42 @@
                         <div class="row mb-3">
                             <label for="ci" class = "col-md-2 col-form-label ">CI </label>
                             <div class="col-md-10">
-                                <input type="number" name="ci" class = "form-control" min="1" step="1"  required>
+                                <input type="number" name="ci" class = "form-control" min="1" step="1" placeholder="8741574" required>
                             </div>   
                         </div>
             
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-2 col-form-label ">Nombre </label>
                             <div class="col-md-10">
-                                <input type="text" name="nombre" id="nombre" class = "form-control" required>    
+                                <input type="text" name="nombre" id="nombre" class = "form-control" placeholder="Pedro Jimenez" required>    
                             </div>
                         </div>
             
                         <div class="row mb-3">
                             <label for="telefono" class="col-md-2 col-form-label ">Telefono  </label>
                             <div class="col-md-10">
-                                <input type="tel" pattern="[0-9]{8}" name="telefono" id="telefono" class = "form-control" required>
+                                <input type="tel" pattern="[0-9]{8}" name="telefono" id="telefono" class = "form-control" placeholder="74589748" required>
                             </div>
                         </div>
             
                         <div class="row mb-3">
                             <label for="email" class="col-md-2 col-form-label ">Email  </label>
                             <div class="col-md-10">
-                                <input type="email" name="email" id="email" class = "form-control" required>
+                                <input type="email" name="email" id="email" class = "form-control" placeholder="pedro@gmail.com" required>
                             </div>
                         </div>
             
                         <div class="row mb-3">
                             <label for="contrasenia" class="col-md-2 col-form-label ">Contraseña  </label>
                             <div class="col-md-10">
-                                <input type="password" name="password" id="password" class = "form-control" required>
+                                <input type="password" name="password" id="password" class = "form-control" placeholder="*******" required>
                             </div>
                         </div>
             
                         <div class="row mb-3">
                             <label for="direccion" class="col-md-2 col-form-label ">Direccion  </label>
                             <div class="col-md-10">
-                                <input type="text" name="direccion" id="direccion" class = "form-control" required>
+                                <input type="text" name="direccion" id="direccion" class = "form-control" placeholder="Av. Beni entre 3er y 4to anillo" required>
                             </div>
                         </div>
 
