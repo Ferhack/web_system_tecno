@@ -16,6 +16,7 @@ use App\Http\Controllers\MultaSocioController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\AportePagoController;
 use App\Http\Controllers\MultaPagoController;
+use App\Http\Controllers\KardexController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\AsistenciaSocioController;
 
@@ -100,6 +101,9 @@ Route::get('/multa_pago/{nro_pago}', [MultaPagoController::class, 'index']);
 Route::get('/multa_pago/{nro_pago}/create', [MultaPagoController::class, 'create']);
 Route::post('/multa_pago/{nro_pago}/create', [MultaPagoController::class, 'store']);
 Route::delete('/multa_pago/{nro_pago}/{id_multa}', [MultaPagoController::class, 'destroy']);
+
+// KARDEX ROUTE
+Route::get('/kardex/{ci_socio}', [KardexController::class, 'index']);
 
 // REPORTE ROUTE
 Route::get('/reporte_ingreso', [ReportesController::class, 'indexIngreso']);
